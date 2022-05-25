@@ -1,10 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 
-namespace onlinePharmacy.Models
+namespace dMart.Models
 {
     public class userRepository
     {
-        static string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //signup new user and create its account in database
         public static void RegisterUser(users user)

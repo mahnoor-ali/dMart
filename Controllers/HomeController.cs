@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using onlinePharmacy.Models;
+using dMart.Models;
 using System.Diagnostics;
 
-namespace onlinePharmacy.Controllers
+namespace dMart.Controllers
 {
     public class HomeController : Controller
     {

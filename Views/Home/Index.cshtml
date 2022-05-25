@@ -1,4 +1,4 @@
-﻿@model List<onlinePharmacy.Models.users>
+﻿@model List<dMart.Models.users>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -28,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(onlinePharmacy.Models.users user in Model)
+        @foreach(dMart.Models.users user in Model)
         {
             <tr>
                 <td>@user.Username</td>

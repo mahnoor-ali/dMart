@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using onlinePharmacy.Models;
+using dMart.Models;
 
-namespace onlinePharmacy.Controllers
+namespace dMart.Controllers
 {
     public class signupController : Controller
     {

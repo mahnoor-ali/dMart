@@ -1,4 +1,4 @@
-namespace onlinePharmacy.Models
+namespace dMart.Models
 {
     public class ErrorViewModel
     {
