@@ -14,7 +14,7 @@
 </head>
 <body>
     
-    <header class="mb-3 p-3 border-bottom">
+    <header class="mb-3 p-3 border-bottom bg-light">
         <div class="d-flex flex-wrap  justify-content-center align-items-center justify-content-lg-start">
 
             <div class="border-end">
@@ -30,7 +30,7 @@
             </ul>
 
             <div class="border-end">
-                <a href="" class=" me-5" style="text-decoration: none; color: red;">
+                <a class=" me-5" style="text-decoration: none; color: red;">
                     <img src="~/lib/cart.png" alt="">
                     My Cart
                 </a>
@@ -41,7 +41,7 @@
                     <i class="bi bi-person-circle" style="font-size: 2rem;"></i>
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                    <li><a class="btn btn-danger ms-2" href="#" type="button">Login / Signup</a></li>
+                    <li><a asp-controller="signup" asp-action="Signup" class="btn btn-danger ms-2" type="button">Login / Signup</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

@@ -14,13 +14,26 @@ namespace dMart.Controllers
         [HttpPost]
         public IActionResult Signup(users user)
         {
-            if (userRepository.validateNewUser(user))
+            if (ModelState.IsValid)
             {
-                userRepository.RegisterUser(user);
-                return RedirectToAction("Login");
+                if (userRepository.validateNewUser(user))
+                {
+                    userRepository.RegisterUser(user);
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    string msg = "User with this email or phone number already exist. Please login with your existing account";
+                    return View("Error", msg);
+                }
             }
-            string msg = "User with this email or phone number already exist. Please login with your existing account";
-            return View("Error", msg);
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Please enter correct data");
+            }
+            return View();
+
+
         }
 
 
@@ -33,12 +46,25 @@ namespace dMart.Controllers
         [HttpPost]
         public IActionResult Login(users user)
         {
-            if (userRepository.validateLogin(user))
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                if (userRepository.validateLogin(user))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    string msg = "Wrong login credentials. Please Try again";
+                    return View("Error", msg);
+                }
             }
-            string msg = "Wrong login credentials. Please Try again";
-            return View("Error", msg);
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Please enter correct data");
+            }
+            return View();
+            
+           
         }
 
     }

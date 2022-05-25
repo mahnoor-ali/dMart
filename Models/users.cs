@@ -1,12 +1,24 @@
-﻿namespace dMart.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace dMart.Models
 {
     public class users
     {
-
+        [Required(ErrorMessage = "Please enter your name")]
+        [StringLength(25)]
         public string Username { get; set; }
+
+        [Required(ErrorMessage = "Please enter your email")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Please enter a password")]
         public string Password { get; set; }
+
+        [Required (ErrorMessage = "Please repeat password")]
         public string ConfirmPass { get; set; }
+
+        [Required(ErrorMessage = "Please enter your contact number")]
+        [Range(11,12)]
         public int Number { get; set; }
 
         public users()
