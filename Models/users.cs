@@ -18,13 +18,12 @@ namespace dMart.Models
         public string ConfirmPass { get; set; }
 
         [Required(ErrorMessage = "Please enter your contact number")]
-        [Range(11,12)]
-        public int Number { get; set; }
+        public string Number { get; set; }
 
         public users()
         {
         }
-        public users(string user, string email, string pw, string confirmPw, int num)
+        public users(string user, string email, string pw, string confirmPw, string num)
         {
             Username= user;
             Email= email;

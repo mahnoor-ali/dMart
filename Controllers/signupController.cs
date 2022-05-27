@@ -46,26 +46,14 @@ namespace dMart.Controllers
         [HttpPost]
         public IActionResult Login(users user)
         {
-            if (ModelState.IsValid)
-            {
-                if (userRepository.validateLogin(user))
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    string msg = "Wrong login credentials. Please Try again";
-                    return View("Error", msg);
-                }
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Please enter correct data");
-            }
-            return View();
-            
-           
-        }
 
+            if (userRepository.validateLogin(user))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            string msg = "Wrong login credentials. Please Try again";
+            return View("Error", msg);
+        }
     }
 }

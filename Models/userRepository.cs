@@ -40,7 +40,7 @@ namespace dMart.Models
                 users user = new users();
                 user.Username = dr.GetString(1);
                 user.Email = dr.GetString(2);  
-                user.Number = (int) dr.GetInt32(3);
+                user.Number = dr.GetString(3);
                 usersList.Add(user);
             }
             con.Close();

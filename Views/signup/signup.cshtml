@@ -20,6 +20,10 @@
 
 <body>
 
+    @section header{
+    <partial name="_PartialHeader" />;
+    }
+
     <div class="container mt-4 px-4">
         <div class="card">
             <div class="row align-items-center my-4 card-body">
@@ -37,9 +41,10 @@
                             <input asp-for="Email" class="form-control ms-3" placeholder="Enter your Email" />
                         </div>
 
-                        <div class="mb-4 input-group">
+                        <div class="mb-4 input-group" style="position:relative;">
                             <i class="bi bi-telephone-fill" style="font-size: 1.5rem;"></i>
-                            <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number" />
+                            <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number: +92" />
+                            
                         </div>
 
                         <div class="mb-4 input-group">
