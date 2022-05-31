@@ -1,0 +1,10 @@
+
+    .carousel-inner {
+        height: 260px !important;
+        width: 90% !important;
+        margin: auto;
+      }
+  
+      .d-flex div {
+        margin-left: 1vw;
+      }
