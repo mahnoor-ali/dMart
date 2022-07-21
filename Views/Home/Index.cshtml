@@ -1,45 +1,103 @@
-﻿@model List<dMart.Models.users>
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+  <div id="carouselExampleControls" class="carousel carousel-dark" data-bs-ride="carousel">
+    <div class="carousel-inner" height="100%">
+      <div class="carousel-item active">
+        <img src="~/lib/slider/1.png" class="d-block" alt="offer">
+      </div>
+      <div class="carousel-item">
+        <img src="~/lib/slider/2.png" class="d-block" alt="offer">
+      </div>
+      <div class="carousel-item">
+        <img src="~/lib/slider/3.png" class="d-block" alt="offer">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-<!doctype html>
-<html lang="en">
+  <div class="my-3"></div>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-</head>
-
-<body>
-
-    <table class="table table-striped">
-  
-    <thead>
-        <tr>
-      <th >Name</th>
-      <th >Email</th>
-      <th >Phone Number</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(dMart.Models.users user in Model)
-        {
-            <tr>
-                <td>@user.Username</td>
-                <td>@user.Email</td>
-                <td>@user.Number</td>
-           </tr>
-        }
-    </tbody>
-    </table>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-</body>
-</html>
+  <div class="container fw-bold fs-1 text-center py-5"> Categories </div>
+  <div class="d-flex flex-wrap justify-content-evenly">
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/a.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/b.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/c.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/d.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/e.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/f.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/g.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/h.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/i.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/j.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/k.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/l.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/m.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/n.png" alt="category">
+      </a>
+    </div>
+    <div>
+      <a asp-action="">
+        <img src="~/lib/categories/o.png" alt="category">
+      </a>
+    </div>
+  </div>
