@@ -32,8 +32,6 @@ namespace dMart.Controllers
                 ModelState.AddModelError(string.Empty, "Please enter correct data");
             }
             return View();
-
-
         }
 
 
@@ -46,7 +44,6 @@ namespace dMart.Controllers
         [HttpPost]
         public IActionResult Login(users user)
         {
-
             if (userRepository.validateLogin(user))
             {
                 return RedirectToAction("Index", "Home");

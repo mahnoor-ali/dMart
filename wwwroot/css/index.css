@@ -1,0 +1,8 @@
+.slideImg {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-inner {
+    height:auto !important;
+}
