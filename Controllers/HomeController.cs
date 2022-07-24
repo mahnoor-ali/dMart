@@ -8,11 +8,7 @@ namespace dMart.Controllers
     {
         public ViewResult Index()
         {
-            return View(userRepository.ViewUsers()); //list of users passed to Homepage view
-        }
-        public ViewResult home()
-        {
-            return View();
+            return View(); 
         }
 
     }

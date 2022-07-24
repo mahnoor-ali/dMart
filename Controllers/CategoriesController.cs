@@ -8,5 +8,10 @@ namespace DMART.Controllers
         {
             return View();
         }
+
+        public ViewResult productCategory()
+        {
+            return View();
+        }
     }
 }

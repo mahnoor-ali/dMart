@@ -23,32 +23,36 @@
             <div class="row align-items-center my-4 card-body">
                 <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
                     <form action="/signup/Signup" method="post">
-                        <div asp-validation-summary="All">  </div>
+                        <!--  <div asp-validation-summary="All">  </div> -->
                         <div class="text-center mb-4 fw-bold fs-2"> Create an account </div>
-                        <div class="input-group mb-4">
+                        <div class="input-group mb-4 d-flex flex-wrap">
                             <i class="bi bi-person-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="Username" class="form-control ms-3" placeholder="Enter your Name" />
+                            <input asp-for="Username" class="form-control ms-3" placeholder="Enter your Name" style="width:80%" />
+                            <span asp-validation-for="Username" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
 
                         <div class="mb-4 input-group">
                             <i class="bi bi-envelope-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="Email" class="form-control ms-3" placeholder="Enter your Email" />
+                            <input asp-for="Email" class="form-control ms-3" placeholder="Enter your Email"  style="width:80%"  />                          
+                            <span asp-validation-for="Email" style="font-size:14px" class="text-danger mx-auto  ps-1"></span>
                         </div>
 
                         <div class="mb-4 input-group" style="position:relative;">
                             <i class="bi bi-telephone-fill" style="font-size: 1.5rem;"></i>
-                            <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number: +92" />
-                            
+                            <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number: +92"  style="width:80%" />
+                             <span asp-validation-for="Number" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
 
                         <div class="mb-4 input-group">
                             <i class="bi bi-lock-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="Password" class="form-control ms-3" placeholder="Create a password" />
-                        </div>
+                            <input asp-for="Password" class="form-control ms-3" placeholder="Create a password"  style="width:80%" />
+                             <span asp-validation-for="Password" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
+                        </div> 
 
                         <div class="mb-4 input-group">
                             <i class="bi bi-key-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="ConfirmPass" class="form-control ms-3" placeholder="Re-enter password" />
+                            <input asp-for="ConfirmPass" class="form-control ms-3" placeholder="Re-enter password"  style="width:80%" />
+                            <span asp-validation-for="ConfirmPass" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
 
                         <div class="mb-4 text-center">

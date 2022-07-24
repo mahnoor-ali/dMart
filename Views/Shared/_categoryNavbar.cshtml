@@ -1,0 +1,90 @@
+﻿<!--Partial view of navbar that will be used on categories pages-->
+@section category {
+<link href="~/css/category.css" rel="Stylesheet" type="text/css" />
+}
+@section BSscript{
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+}
+
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-2 mt-3">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                        <span>Fruits and Vegetables</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Dairy & Bread</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Snacks & Chocolates</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Bakery and Biscuits</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Breakfast</span></a>
+
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Tea, Coffe & Drinks </span></a>
+
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Beverages </span></a>
+
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Flour, Rice & Daal </span></a>
+
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Oil and Spices </span></a>
+
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Sauces and spreads</span></a>
+                </div>
+            </div>
+        </nav>
+
+ <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top p-0">
+<header id="bootstrap-overrides" style="background-color: #c7c7f4;" class="p-1 border-bottom">
+    <div id="navigation" class="d-flex flex-wrap navbar">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="border-end">
+            <a asp-controller="Home" asp-action="Index"> <img src="~/lib/logo.png" alt="logo" class="bi me-4"> </a>
+        </div>
+
+        <form action="/search/searchResult" method="post" id="search" class="d-none d-md-flex input-group w-auto my-auto">
+      <input type="search" class="form-control ms-4 py-2 searchbar" placeholder="Search for products">
+      <span class="input-group-text border-0 px-2 py-2" id="search-addon"> <button type="submit" style="border: 0px;"><i class="bi bi-search"></i></button>  </span>
+      </form>
+
+       
+        <div class="navbar-nav ms-auto d-flex flex-row">
+
+          <div class="dropdown text-end ms-auto me-2 btn-group px-2" id="dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle" style="font-size: 2rem;"></i> <span style="font-size:1.5rem;">Account</span> 
+           </a>
+         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="position: absolute; right: 0;">
+          <li><a class="dropdown-item" href="#">My Orders</a></li>
+          <li><a class="dropdown-item" href="#">Address</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+          <li><a asp-controller="signup" asp-action="Signup" class="dropdown-item">Login/Signup</a></li>
+          </ul>
+         </div>
+
+         <div class="pe-3 pt-2">
+         <a data-bs-toggle="offcanvas" href="#cart" role="button" aria-controls="cart" class="mx-1" style="text-decoration: none; color: black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+             </svg>                       
+         </a>
+         </div>
+        </div>
+    </div>
+</header>
+</nav>

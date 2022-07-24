@@ -5,9 +5,10 @@
 }
 
 .d-flex div {
-    margin-left: 1vw;
+    margin-left: 2px;
 }
 
+/*
 #bootstrap-overrides input{
     width:50%;
 }
@@ -23,6 +24,7 @@
         width: 30% !important;
     }
 }
+*/
 
 input:focus {
     border: 4px solid black;
@@ -32,4 +34,26 @@ input:focus {
     border: 1px solid #adadf0;
     border-radius: 13px;
     box-sizing: border-box;
+}
+
+#search input {
+    width: 45vw;
+}
+
+@media only screen and (max-width: 1165px) {
+    #search input {
+        width: 40vw !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    #search input {
+        width: 35vw !important;
+    }
+}
+
+@media only screen and (max-width: 827px) {
+   #search input {
+        width: 80% !important;
+    }
 }

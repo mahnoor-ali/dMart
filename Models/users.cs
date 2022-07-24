@@ -4,11 +4,12 @@ namespace dMart.Models
 {
     public class users
     {
-        [Required(ErrorMessage = "Please enter your name")]
+        [Required(ErrorMessage = "Name field can't be empty")]
         [StringLength(25)]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Please enter your email")]
+        [Required(ErrorMessage = " Email field can't be empty")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter a password")]
@@ -17,7 +18,7 @@ namespace dMart.Models
         [Required (ErrorMessage = "Please repeat password")]
         public string ConfirmPass { get; set; }
 
-        [Required(ErrorMessage = "Please enter your contact number")]
+        [Required(ErrorMessage = "Please enter contact no.")]
         public string Number { get; set; }
 
         public users()

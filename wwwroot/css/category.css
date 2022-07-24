@@ -1,0 +1,80 @@
+﻿@media (min-width: 992px) {
+    main{
+    padding-left: 240px;
+}}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;
+}
+
+#sidebarMenu {
+    min-width: 230px;
+    max-width: 230px;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    inset: 0 0 0 0;
+    padding: 70px 0 0; /* Height of sidebar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+
+.d-flex div {
+    margin-left: 1vw;
+}
+
+@media only screen and (max-width: 827px) {
+    #navigation form {
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+input:focus {
+    border: 4px solid black;
+}
+
+header {
+    width: 100vw;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 8px;
+}
+
+.item {
+    flex-basis: 15vw;
+}
+
+@media (max-width: 991px) {
+    .item {
+        flex-basis: 23vw;
+    }
+}
+
+@media (max-width: 767px) {
+    .item {
+        flex-basis: 31vw;
+    }
+}
+
+@media (max-width:575px) {
+    .item {
+        flex-basis: 46vw;
+    }
+}
+
+#navigation div {
+    margin-left: 2px;
+}
