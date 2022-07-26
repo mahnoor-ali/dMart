@@ -1,7 +1,11 @@
 ﻿@media (min-width: 992px) {
     main{
     padding-left: 240px;
-}}
+}
+    #footer footer {
+        padding-left: 240px;
+    }
+}
 
 .sidebar-sticky {
     position: relative;
@@ -33,7 +37,6 @@
 
 @media only screen and (max-width: 827px) {
     #navigation form {
-        display: block !important;
         width: 100% !important;
     }
 }
@@ -77,4 +80,8 @@ header {
 
 #navigation div {
     margin-left: 2px;
+}
+
+#footer div {
+    max-width: 100% !important;
 }

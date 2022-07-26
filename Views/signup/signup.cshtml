@@ -1,7 +1,6 @@
 ﻿@using dMart.Models;
 @model users;
 
-
 <!doctype html>
 <html lang="en">
 
@@ -30,8 +29,7 @@
                             <input asp-for="Username" class="form-control ms-3" placeholder="Enter your Name" style="width:80%" />
                             <span asp-validation-for="Username" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
-
-                        <div class="mb-4 input-group">
+s                        <div class="mb-4 input-group">
                             <i class="bi bi-envelope-fill" style="font-size: 1.5rem;"></i>
                             <input asp-for="Email" class="form-control ms-3" placeholder="Enter your Email"  style="width:80%"  />                          
                             <span asp-validation-for="Email" style="font-size:14px" class="text-danger mx-auto  ps-1"></span>
@@ -42,25 +40,20 @@
                             <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number: +92"  style="width:80%" />
                              <span asp-validation-for="Number" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
-
                         <div class="mb-4 input-group">
                             <i class="bi bi-lock-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="Password" class="form-control ms-3" placeholder="Create a password"  style="width:80%" />
+                            <input type="password" asp-for="Password" class="form-control ms-3" placeholder="Create a password"  style="width:80%" />
                              <span asp-validation-for="Password" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div> 
-
                         <div class="mb-4 input-group">
                             <i class="bi bi-key-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="ConfirmPass" class="form-control ms-3" placeholder="Re-enter password"  style="width:80%" />
+                            <input  type="password" asp-for="ConfirmPass" class="form-control ms-3" placeholder="Re-enter password"  style="width:80%" />
                             <span asp-validation-for="ConfirmPass" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
-
                         <div class="mb-4 text-center">
                             <button type="submit" class="btn btn-primary px-5 py-2">Signup</button>
                         </div>
-
                         <p class="px-5 py-2"> Already have an dMart.pk account? <a asp-action="login"> login </a> </p>
-
                     </form>
                 </div>
 

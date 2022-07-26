@@ -2,9 +2,6 @@
 @section category {
 <link href="~/css/category.css" rel="Stylesheet" type="text/css" />
 }
-@section BSscript{
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-}
 
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
@@ -53,7 +50,7 @@
             <a asp-controller="Home" asp-action="Index"> <img src="~/lib/logo.png" alt="logo" class="bi me-4"> </a>
         </div>
 
-        <form action="/search/searchResult" method="post" id="search" class="d-none d-md-flex input-group w-auto my-auto">
+        <form action="/Search/searchResult" method="post" id="search" class="d-none d-md-flex input-group w-auto my-auto">
       <input type="search" class="form-control ms-4 py-2 searchbar" placeholder="Search for products">
       <span class="input-group-text border-0 px-2 py-2" id="search-addon"> <button type="submit" style="border: 0px;"><i class="bi bi-search"></i></button>  </span>
       </form>

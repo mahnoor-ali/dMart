@@ -7,7 +7,7 @@ namespace DMART.Controllers
         public ViewResult searchResult()
         {
             //list of objects here.. to return to view
-            return View();
+            return View("searchResult");
         }
     }
 }
