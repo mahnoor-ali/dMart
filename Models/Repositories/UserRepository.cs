@@ -1,13 +1,15 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using dMart.Models;
+using Microsoft.Data.SqlClient;
+using DMART.Models.Interfaces;
 
-namespace dMart.Models
+namespace DMART.Models.Repositories
 {
-    public class userRepository
+    public class UserRepository : IUserRepository
     {
-        static string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        const string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //signup new user and create its account in database
-        public static void RegisterUser(users user)
+        public void RegisterUser(users user)
         {
             SqlConnection con = new SqlConnection(conString);
             con.Open();
@@ -26,7 +28,7 @@ namespace dMart.Models
         }
 
         //view all users accounts
-        public static List<users> ViewUsers()
+        public List<users> ViewUsers()
         {
             List<users> usersList = new List<users>();
             SqlConnection con = new SqlConnection(conString);
@@ -34,12 +36,12 @@ namespace dMart.Models
             string query = "SELECT * FROM Users";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
-            
+
             while (dr.Read())
             {
                 users user = new users();
                 user.Username = dr.GetString(1);
-                user.Email = dr.GetString(2);  
+                user.Email = dr.GetString(2);
                 user.Number = dr.GetString(3);
                 usersList.Add(user);
             }
@@ -48,7 +50,7 @@ namespace dMart.Models
         }
 
         //validate that a user account doesn't exist with same email or phone no
-        public static bool validateNewUser(users user)
+        public bool validateNewUser(users user)
         {
             SqlConnection con = new SqlConnection(conString);
             con.Open();
@@ -67,7 +69,7 @@ namespace dMart.Models
         }
 
         //verify email and password for login
-        public static bool validateLogin(users user)
+        public bool validateLogin(users user)
         {
             SqlConnection con = new SqlConnection(conString);
             con.Open();
@@ -78,7 +80,7 @@ namespace dMart.Models
             comand.Parameters.Add(p1);
             comand.Parameters.Add(p2);
             SqlDataReader dr = comand.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
                 return true; //login sucessful
             }

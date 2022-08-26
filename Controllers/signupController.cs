@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using dMart.Models;
+using DMART.Models.Repositories;
+using DMART.Models.Interfaces;
 
 namespace dMart.Controllers
 {
     public class signupController : Controller
     {
+        private readonly IUserRepository usersRepo;
+
         [HttpGet]
         public ViewResult Signup()
         {
@@ -16,9 +20,9 @@ namespace dMart.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (userRepository.validateNewUser(user))
+                if (usersRepo.validateNewUser(user))
                 {
-                    userRepository.RegisterUser(user);
+                    usersRepo.RegisterUser(user);
                     return RedirectToAction("Login");
                 }
                 else
@@ -44,7 +48,7 @@ namespace dMart.Controllers
         [HttpPost]
         public IActionResult Login(users user)
         {
-            if (userRepository.validateLogin(user))
+            if (usersRepo.validateLogin(user))
             {
                 return RedirectToAction("Index", "Home");
             }
