@@ -4,6 +4,8 @@ namespace dMart.Models
 {
     public class users
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Name field can't be empty")]
         [StringLength(25)]
         public string Username { get; set; }
