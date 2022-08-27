@@ -1,4 +1,4 @@
-namespace dMart.Models
+namespace DMART.Models
 {
     public class ErrorViewModel
     {

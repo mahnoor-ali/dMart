@@ -2,11 +2,12 @@
 {
     public interface IProductRepository
     {
-
         public List<Product> GetAllProducts();
-        public Product GetProductByName(int id);
+        public Product GetProductById(int id);
         public int AddProduct(Product product);
-        public void UpdateProduct(Product product);
+        public Product UpdateProduct(Product product);
         public void DeleteProduct(Product product);
+        public int AddCategory(Category category);
+        public List<Product> Search(String searchItem);
     }
 }

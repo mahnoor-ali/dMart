@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace dMart.Models
+namespace DMART.Models
 {
     public class users
     {

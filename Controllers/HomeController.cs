@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using dMart.Models;
+using DMART.Models;
 using System.Diagnostics;
 
-namespace dMart.Controllers
+namespace DMART.Controllers
 {
     public class HomeController : Controller
     {

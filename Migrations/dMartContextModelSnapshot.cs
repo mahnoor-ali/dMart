@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DMART.Migrations
 {
-    [DbContext(typeof(dMartContext))]
-    partial class dMartContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DMARTContext))]
+    partial class DMARTContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace DMART.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DMART.Models.Categories", b =>
+            modelBuilder.Entity("DMART.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace DMART.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("DMART.Models.Product", b =>
@@ -78,7 +78,7 @@ namespace DMART.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("dMart.Models.users", b =>
+            modelBuilder.Entity("DMART.Models.users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Product>
+
+@section category {
+<link href="~/css/category.css" rel="Stylesheet" type="text/css" />
+}
+ <!--Section to  use in layout for category page only-->
+  @section categoryNavbar{
+        <partial name="_categoryNavbar" />
+   }  
+
+   </div>
+    <!--Main layout-->
+    <main style="margin-top: 58px; margin-bottom: 30px">
+        <div class="pt-4 px-1" >
+            <div class="d-inline-flex flex-wrap box"> <!--p 16px TITLE    h6 price...  16 12 14px -->
+                
+                @foreach (var product in Model)
+                {
+                    <div class="card item">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp" class="card-img-top" alt="Laptop" />
+                   <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h5 class="mb-0">@product.Name</h5>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="small text-muted" style="font-size: 12px;  margin-bottom: 6px;">@product.Description</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-0" style="font-size: 14px;">@product.Price</p>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </main>

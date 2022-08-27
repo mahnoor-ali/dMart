@@ -1,4 +1,4 @@
-﻿using dMart.Models;
+﻿using DMART.Models;
 
 namespace DMART.Models.Interfaces
 {

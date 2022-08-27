@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using dMart.Models;
-using DMART.Models.Repositories;
+using DMART.Models;
 using DMART.Models.Interfaces;
 
-namespace dMart.Controllers
+namespace DMART.Controllers
 {
     public class signupController : Controller
     {

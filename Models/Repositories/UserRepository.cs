@@ -1,4 +1,4 @@
-﻿using dMart.Models;
+﻿using DMART.Models;
 using Microsoft.Data.SqlClient;
 using DMART.Models.Interfaces;
 
@@ -7,11 +7,11 @@ namespace DMART.Models.Repositories
     public class UserRepository : IUserRepository
     {
         const string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        private readonly dMartContext context;
+        private readonly DMARTContext context;
 
         public UserRepository()
         {
-            context = new dMartContext();
+            context = new DMARTContext();
         }
 
         //signup new user and create its account in database
