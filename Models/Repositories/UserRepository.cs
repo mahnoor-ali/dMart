@@ -7,24 +7,19 @@ namespace DMART.Models.Repositories
     public class UserRepository : IUserRepository
     {
         const string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private readonly dMartContext context;
+
+        public UserRepository()
+        {
+            context = new dMartContext();
+        }
 
         //signup new user and create its account in database
-        public void RegisterUser(users user)
+        public int RegisterUser(users user)
         {
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-            SqlParameter p1 = new SqlParameter("u", user.Username);
-            SqlParameter p2 = new SqlParameter("e", user.Email);
-            SqlParameter p3 = new SqlParameter("phone", user.Number);
-            SqlParameter p4 = new SqlParameter("pw", user.Password);
-            string query = "INSERT INTO Users(username,email,phone,password) VALUES (@u, @e, @phone, @pw)";
-            SqlCommand comand = new SqlCommand(query, con);
-            comand.Parameters.Add(p1);
-            comand.Parameters.Add(p2);
-            comand.Parameters.Add(p3);
-            comand.Parameters.Add(p4);
-            comand.ExecuteNonQuery();
-            con.Close();
+            context.Users.Add(user);
+            context.SaveChanges();
+            return user.Id;
         }
 
         //view all users accounts

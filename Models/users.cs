@@ -14,13 +14,19 @@ namespace dMart.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter a password")]
+        [Required(ErrorMessage = "Password is required")]
+        [StringLength(15, ErrorMessage = "Must be between 6 and 15 characters", MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        [Required (ErrorMessage = "Please repeat password")]
+        
+        [Required(ErrorMessage = "Confirm Password is required")]
+        [StringLength(15, ErrorMessage = "Must be between 6 and 15 characters", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Compare("Password")]
         public string ConfirmPass { get; set; }
 
         [Required(ErrorMessage = "Please enter contact no.")]
+        [StringLength(11, ErrorMessage = "Number must be 11 characters long")]
         public string Number { get; set; }
 
         public users()

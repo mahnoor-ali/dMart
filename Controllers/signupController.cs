@@ -7,7 +7,12 @@ namespace dMart.Controllers
 {
     public class signupController : Controller
     {
-        private readonly IUserRepository usersRepo;
+        private readonly IUserRepository usersRepo = null;
+
+        public signupController(IUserRepository bookRepository)
+        {
+            usersRepo=bookRepository;
+        }
 
         [HttpGet]
         public ViewResult Signup()
@@ -22,8 +27,11 @@ namespace dMart.Controllers
             {
                 if (usersRepo.validateNewUser(user))
                 {
-                    usersRepo.RegisterUser(user);
-                    return RedirectToAction("Login");
+                   int id = usersRepo.RegisterUser(user);
+                    if (id>0) //if user is registered, go to login page
+                    {
+                        return RedirectToAction("Login");
+                    }
                 }
                 else
                 {
