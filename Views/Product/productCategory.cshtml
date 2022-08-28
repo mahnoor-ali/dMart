@@ -17,7 +17,7 @@
                 @foreach (var product in Model)
                 {
                     <div class="card item">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp" class="card-img-top" alt="Laptop" />
+                    <img src="@product.ImageUrl" class="card-img-top" alt="Laptop" />
                    <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
                             <h5 class="mb-0">@product.Name</h5>

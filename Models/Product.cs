@@ -12,13 +12,40 @@ namespace DMART.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; } = null!;
+        
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(20, ErrorMessage = "Must be between 5 and 20 characters", MinimumLength = 5)]
+        public string Name { get; set; }
+        
+        
+        [StringLength(50, ErrorMessage = "Must be between 10 and 50 characters", MinimumLength = 10)]
         public string? Description { get; set; }
+
+        [Required(ErrorMessage = "Price is required")]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid Price")]
         public int Price { get; set; }
+
+        
+        
+        [Required(ErrorMessage = "Quantity is required")]
         public int Quantity { get; set; }
-        public string Image { get; set; } = null!;
-        public string CategoryId { get; set; } = null!;
+
+        
+        [Required(ErrorMessage = "Image is required")]
+        public IFormFile Image { get; set; }
+        
+        [Required(ErrorMessage = "Image is required")]
+        public String ImageUrl { get; set; }
+        
+        
+        [Required(ErrorMessage = "Category Id is required")]
+        public string CategoryId { get; set; }
+
+        
+        
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid discount")]
         public int Discount { get; set; }
+        [Range(0, 90, ErrorMessage = "Please enter valid Price")]
         public int DiscountPercentage { get; set; }
         
     }

@@ -10,13 +10,38 @@ namespace DMART.Controllers
     {
 
         private readonly IProductRepository productRepo;
+        private readonly IWebHostEnvironment Environment;
 
-        public AdminController(IProductRepository productRepository)
+        public AdminController(IProductRepository productRepository, IWebHostEnvironment environment)
         {
             productRepo = productRepository;
+            Environment = environment;
         }
 
-        [Authorize]
+        //upload image of a product to the server
+        public String UploadImage(IFormFile image) 
+        {
+            string wwwPath = this.Environment.WebRootPath;
+            //absolute path of images folder
+            string path = Path.Combine(wwwPath, "ProductImages");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            String fileName = Path.GetFileName(image.FileName);
+           
+            //TO MAKE FILENAME UNIQUE
+            // fileName = Guid.NewGuid().ToString() + "_" +  fileName;
+            //absolute path of uploaded image file
+            var pathWithFileName = Path.Combine(path, fileName);
+            using (FileStream stream = new FileStream(pathWithFileName, FileMode.Create))
+            {
+                image.CopyTo(stream);
+                ViewBag.Message = "File uploaded successfully";
+            }
+            return ("/" + pathWithFileName);
+        }
+
         public ViewResult addProduct(bool isSuccess = false, int bookId = 0)
         {
             ViewBag.IsSuccess = isSuccess;
@@ -27,12 +52,13 @@ namespace DMART.Controllers
         [HttpPost]
         public IActionResult addProduct(Product item)
         {
-                int id = productRepo.AddProduct(item);
-                if (id > 0)
-                {
-                    return RedirectToAction("addProduct", new { isSuccess = true, bookId = id });
-                }
-                return View();
+            item.ImageUrl =  UploadImage(item.Image); //upload image along with saving its path to Database
+            int id = productRepo.AddProduct(item);
+            if (id > 0)
+            {
+                return RedirectToAction("addProduct", new { isSuccess = true, bookId = id });
+            }
+            return View();
         }
 
         [HttpGet]

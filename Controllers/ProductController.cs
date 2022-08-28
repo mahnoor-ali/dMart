@@ -22,7 +22,12 @@ namespace DMART.Controllers
          public ViewResult SearchResult(String searchItem)
          {
             List<Product> products = productRepo.Search(searchItem);
-            return View("productCategory", products);
+            if (products.Count!=0)
+            {
+                return View("productCategory", products);
+            }
+            string msg = "No such item found.";
+            return View("Error", msg);
          }
 
 
