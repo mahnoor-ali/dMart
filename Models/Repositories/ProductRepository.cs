@@ -43,7 +43,7 @@ namespace DMART.Models.Repositories
                 products.CategoryId=product.CategoryId;
                 products.Description=product.Description;
                 products.Discount=product.Discount;
-                products.Image=product.Image;
+                products.ImageUrl=product.ImageUrl;
                 context.SaveChanges();
             }
             return products;

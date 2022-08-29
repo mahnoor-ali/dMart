@@ -31,8 +31,6 @@ namespace DMART.Models
         public int Quantity { get; set; }
 
         
-        [Required(ErrorMessage = "Image is required")]
-        public IFormFile Image { get; set; }
         
         [Required(ErrorMessage = "Image is required")]
         public String ImageUrl { get; set; }
@@ -45,6 +43,7 @@ namespace DMART.Models
         
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid discount")]
         public int Discount { get; set; }
+        
         [Range(0, 90, ErrorMessage = "Please enter valid Price")]
         public int DiscountPercentage { get; set; }
         

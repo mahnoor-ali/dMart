@@ -50,10 +50,31 @@ namespace DMART.Controllers
         }
 
         [HttpPost]
-        public IActionResult addProduct(Product item)
+        public IActionResult addProduct(productModel item)
         {
-            item.ImageUrl =  UploadImage(item.Image); //upload image along with saving its path to Database
-            int id = productRepo.AddProduct(item);
+
+            if (item.Image!=null)
+            {
+                item.ImageUrl =  UploadImage(item.Image); //upload image along with saving its path to Database
+            }
+            //convert productModel to product bcz database don't store IForm File, and productModel uses this type
+            else {
+                Console.WriteLine("not");
+                item.ImageUrl = "/wwwroot/ProductImages/lays.jpeg";
+            }
+            Product newProduct = new Product()
+            {
+                Name = item.Name,
+                Description = item.Description,
+                Price = item.Price,
+                Quantity = item.Quantity,
+                ImageUrl = item.ImageUrl,
+                CategoryId = item.CategoryId,
+                Discount=item.Discount,
+                DiscountPercentage= item.DiscountPercentage
+            };
+
+            int id = productRepo.AddProduct(newProduct);
             if (id > 0)
             {
                 return RedirectToAction("addProduct", new { isSuccess = true, bookId = id });
