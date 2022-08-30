@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using DMART.Models;
 using DMART.Models.Interfaces;
 
-
 namespace DMART.Controllers
 {
     public class AdminController : Controller
@@ -29,17 +28,17 @@ namespace DMART.Controllers
                 Directory.CreateDirectory(path);
             }
             String fileName = Path.GetFileName(image.FileName);
-           
+            Console.WriteLine("ProductImages" + "\\" + fileName);
             //TO MAKE FILENAME UNIQUE
-            // fileName = Guid.NewGuid().ToString() + "_" +  fileName;
-            //absolute path of uploaded image file
+            fileName = Guid.NewGuid().ToString() + "_" +  fileName;
+           // absolute path of uploaded image file
             var pathWithFileName = Path.Combine(path, fileName);
             using (FileStream stream = new FileStream(pathWithFileName, FileMode.Create))
             {
                 image.CopyTo(stream);
                 ViewBag.Message = "File uploaded successfully";
             }
-            return ("/" + pathWithFileName);
+            return "\\ProductImages\\" + fileName;
         }
 
         public ViewResult addProduct(bool isSuccess = false, int bookId = 0)
@@ -50,17 +49,19 @@ namespace DMART.Controllers
         }
 
         [HttpPost]
-        public IActionResult addProduct(productModel item)
+        public IActionResult addProduct(productModel item, IFormFile postedImage)
         {
 
-            if (item.Image!=null)
+            if (postedImage!=null)
             {
-                item.ImageUrl =  UploadImage(item.Image); //upload image along with saving its path to Database
+                Console.WriteLine("hi ");
+                item.ImageUrl =  UploadImage(postedImage); //upload image along with saving its path to Database
+                Console.WriteLine(item.ImageUrl);
             }
             //convert productModel to product bcz database don't store IForm File, and productModel uses this type
             else {
                 Console.WriteLine("not");
-                item.ImageUrl = "/wwwroot/ProductImages/lays.jpeg";
+                item.ImageUrl = "\\ProductImages\\lays.jpeg";
             }
             Product newProduct = new Product()
             {

@@ -5,20 +5,21 @@
     ViewData["Title"] = "Add new Product";
 }
 <div class="container">
-    <h4 class="display-4">Add new Product</h4>
-    <hr />
+    <div class="display-4 fs-2 text-center fw-bold mb-2">Add new Product</div>
     @if (ViewBag.IsSuccess == true)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>You have added new Product successfully.</strong> <br />
+            <!--
             Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.BookId">here</a> to view the details
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            -->
          </div>
     }
 
-<form method="post" enctype="multipart/form-data" asp-action="addProduct" asp-controller="Admin">
+<form method="post" enctype="multipart/form-data" asp-action="addProduct" asp-controller="Admin"  class="card p-5" style="background-color: #ebe6e61a;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
     
@@ -63,18 +64,18 @@
         <input asp-for="DiscountPercentage" class="form-control" />
         <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
     </div>
-
+    
     <div class="form-group mt-3">
-        <label asp-for="Image" class="control-label"></label>
+        <label for="Image" class="control-label"></label>
         <div class="custom-file">
-            <input asp-for="Image" name="postedImage"  id="productImage">
+            <input type="file" name="postedImage"  id="productImage">
         </div>
         <span asp-validation-for="Image" class="text-danger"></span>
         <span>@ViewBag.Message</span>
     </div>
-        
+                
     <div class="form-group mt-5">
-        <input type="submit" value="Add product" class="btn btn-primary w-25" />
+        <input type="submit" value="Add product" class="btn btn-primary w-25 btnColor" style="background-color: #8686db;" />
     </div>
 </form>
 </div>

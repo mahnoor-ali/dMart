@@ -21,11 +21,11 @@
             <div class="row align-items-center my-4 card-body">
                 <div class="col-5 order-2 order-lg-1">
                     <form action="/signup/Login" method="post">
-                        <div class="text-center mb-4 fw-bold fs-2"> LogIn to start shopping </div>
+                        <div class="text-center mb-4 fw-bold fs-2"> Log In to shop</div>
                 
                         <div class="mb-4 input-group">
                             <i class="bi bi-envelope-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="Email" class="form-control ms-3" placeholder="Enter your Email" />
+                            <input asp-for="Email" id="userMail" class="form-control ms-3" placeholder="Enter your Email" />
                             <span class="ms-1" asp-validation-for="Email"></span>
                         </div>
 
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="mb-4 text-center">
-                            <button type="submit" class="btn btn-primary px-5 py-2">Login</button>
+                            <button type="submit" class="btn btn-primary px-5 py-2" onclick="welcomeUser()">Login</button>
                         </div>
 
                         <p class="px-5 py-2">Don't have an account<a asp-action="signup"> Signup </a> </p>

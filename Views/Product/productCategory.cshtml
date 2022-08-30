@@ -17,17 +17,29 @@
                 @foreach (var product in Model)
                 {
                     <div class="card item">
-                    <img src="@product.ImageUrl" class="card-img-top" alt="Laptop" />
-                   <div class="card-body">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="product" />
+                   <div class="card-body" style="background-color: #ebe6e669;">
+                       <div class="d-flex justify-content-between">
+                            <p class="mb-0 fs-4 fw-bold">Rs @product.Price</p>
+                        </div>
                         <div class="d-flex justify-content-between mb-2">
-                            <h5 class="mb-0">@product.Name</h5>
+                            <h5 class="mb-0 fs-5 fw-normal">@product.Name</h5>
                         </div>
+                        @if (product.Quantity>0)
+                        {
+                            <span class="badge text-bg-success">In stock</span>
+                        }
+                        else
+                        {
+                            <span class="badge text-bg-secondary">Out of stock</span>
+                        }
                         <div class="d-flex justify-content-between">
-                            <p class="small text-muted" style="font-size: 12px;  margin-bottom: 6px;">@product.Description</p>
+                            <p class="small text-muted mt-3" >@product.Description</p>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="mb-0" style="font-size: 14px;">@product.Price</p>
-                        </div>
+                       
+                        <div class="form-group text-center">
+                             <input type="submit" value="Add to Cart" class="btn w-100 fw-semibold btnColor" style="background-color: #8686db;" />
+                         </div>
                     </div>
                 </div>
                 }
