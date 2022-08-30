@@ -8,6 +8,10 @@ namespace DMART.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-        public string CategoryName { get; set; }
+        
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(20, ErrorMessage = "Must be between 4 to 20 characters", MinimumLength = 4)]
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

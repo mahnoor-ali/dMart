@@ -16,16 +16,15 @@
                 
                 @foreach (var product in Model)
                 {
-                    <div class="card item">
-                    <img src="@product.ImageUrl" class="card-img-top" alt="product" />
+                    <div class="card item my-2">
+                    <img src="@(@product.ImageUrl==""? @product.ImageUrl : "\\ProductImages\\defaultItem.jpg")" class="card-img-top" alt="product" />
                    <div class="card-body" style="background-color: #ebe6e669;">
                        <div class="d-flex justify-content-between">
                             <p class="mb-0 fs-4 fw-bold">Rs @product.Price</p>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <h5 class="mb-0 fs-5 fw-normal">@product.Name</h5>
-                        </div>
-                        @if (product.Quantity>0)
+                             @if (product.Quantity>0)
                         {
                             <span class="badge text-bg-success">In stock</span>
                         }
@@ -33,8 +32,10 @@
                         {
                             <span class="badge text-bg-secondary">Out of stock</span>
                         }
+                        </div>
+        
                         <div class="d-flex justify-content-between">
-                            <p class="small text-muted mt-3" >@product.Description</p>
+                            <p class="small text-muted mt-2" >@product.Description</p>
                         </div>
                        
                         <div class="form-group text-center">

@@ -23,23 +23,16 @@ namespace DMART.Models
 
         [Required(ErrorMessage = "Price is required")]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid Price")]
-        public int Price { get; set; }
-
-        
+        public int Price { get; set; }        
         
         [Required(ErrorMessage = "Quantity is required")]
         public int Quantity { get; set; }
-
-        
         
         [Required(ErrorMessage = "Image is required")]
         public String ImageUrl { get; set; }
         
-        
         [Required(ErrorMessage = "Category Id is required")]
         public string CategoryId { get; set; }
-
-        
         
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid discount")]
         public int Discount { get; set; }

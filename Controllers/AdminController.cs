@@ -61,7 +61,7 @@ namespace DMART.Controllers
             //convert productModel to product bcz database don't store IForm File, and productModel uses this type
             else {
                 Console.WriteLine("not");
-                item.ImageUrl = "\\ProductImages\\lays.jpeg";
+                item.ImageUrl = "\\ProductImages\\defaultItem.jpg";
             }
             Product newProduct = new Product()
             {

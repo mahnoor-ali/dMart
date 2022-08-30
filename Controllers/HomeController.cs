@@ -8,6 +8,7 @@ namespace DMART.Controllers
     {
         public ViewResult Index()
         {
+            
             return View(); 
         }
 
