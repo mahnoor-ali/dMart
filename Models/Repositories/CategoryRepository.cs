@@ -1,6 +1,8 @@
-﻿namespace DMART.Models.Repositories
+﻿using DMART.Models.Interfaces;
+
+namespace DMART.Models.Repositories
 {
-    public class CategoryRepository
+    public class CategoryRepository: ICategoryRepository
     {
         private readonly DMARTContext context;
         public CategoryRepository()

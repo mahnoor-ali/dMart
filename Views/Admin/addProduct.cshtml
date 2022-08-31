@@ -1,9 +1,14 @@
 ﻿@using DMART.Models;
-@model DMART.Models.productModel;
+@model DMART.Models.Product;
 
 @{
     ViewData["Title"] = "Add new Product";
 }
+
+<script type="text/javascript">
+
+</script>
+
 <div class="container">
     <div class="display-4 fs-2 text-center fw-bold mb-2">Add new Product</div>
     @if (ViewBag.IsSuccess == true)
@@ -19,49 +24,49 @@
          </div>
     }
 
-<form method="post" enctype="multipart/form-data" asp-action="addProduct" asp-controller="Admin"  class="card p-5" style="background-color: #ebe6e61a;">
+<form id="addForm" method="post" enctype="multipart/form-data" asp-action="addProduct" asp-controller="Admin"  class="card p-5" style="background-color: #ebe6e61a;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
     
     <div class="form-group mt-3">
         <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" />
+        <input id="name" asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group mt-3">
         <label asp-for="Price" class="control-label"></label>
-        <input asp-for="Price" class="form-control" />
+        <input id="price" asp-for="Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
     
     <div class="form-group mt-3">
         <label asp-for="Quantity" class="control-label"></label>
-        <input asp-for="Quantity" class="form-control" />
+        <input id="quantity" asp-for="Quantity" class="form-control" />
         <span asp-validation-for="Quantity" class="text-danger"></span>
     </div>
 
     <div class="form-group mt-3">
         <label asp-for="Description" class="control-label"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
+        <textarea id="description" asp-for="Description" class="form-control"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     
      <div class="form-group mt-3">
         <label asp-for="CategoryId" class="control-label"></label>
-        <textarea asp-for="CategoryId" class="form-control"></textarea>
+        <textarea id="categoryId" asp-for="CategoryId" class="form-control"></textarea>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
-
+    
     <div class="form-group mt-3">
         <label asp-for="Discount" class="control-label"></label>
-        <input asp-for="Discount" class="form-control" />
+        <input id="discount" asp-for="Discount" class="form-control" />
         <span asp-validation-for="Discount" class="text-danger"></span>
     </div>
     
     <div class="form-group mt-3">
         <label asp-for="DiscountPercentage" class="control-label"></label>
-        <input asp-for="DiscountPercentage" class="form-control" />
+        <input id="discountPercentage" asp-for="DiscountPercentage" class="form-control" />
         <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
     </div>
     
@@ -70,7 +75,6 @@
         <div class="custom-file">
             <input type="file" name="postedImage"  id="productImage">
         </div>
-        <span asp-validation-for="Image" class="text-danger"></span>
         <span>@ViewBag.Message</span>
     </div>
                 
@@ -79,11 +83,3 @@
     </div>
 </form>
 </div>
-
-
-
-
-
-
-
-

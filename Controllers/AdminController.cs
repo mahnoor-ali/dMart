@@ -17,6 +17,11 @@ namespace DMART.Controllers
             Environment = environment;
         }
 
+        public PartialViewResult postResult()
+        {
+            return PartialView("postResultPartialVc");
+        }
+
         //upload image of a product to the server
         public String UploadImage(IFormFile image) 
         {
@@ -49,33 +54,20 @@ namespace DMART.Controllers
         }
 
         [HttpPost]
-        public IActionResult addProduct(productModel item, IFormFile postedImage)
+        public IActionResult addProduct(Product item, IFormFile postedImage)
         {
 
             if (postedImage!=null)
             {
-                Console.WriteLine("hi ");
                 item.ImageUrl =  UploadImage(postedImage); //upload image along with saving its path to Database
                 Console.WriteLine(item.ImageUrl);
             }
             //convert productModel to product bcz database don't store IForm File, and productModel uses this type
             else {
-                Console.WriteLine("not");
                 item.ImageUrl = "\\ProductImages\\defaultItem.jpg";
             }
-            Product newProduct = new Product()
-            {
-                Name = item.Name,
-                Description = item.Description,
-                Price = item.Price,
-                Quantity = item.Quantity,
-                ImageUrl = item.ImageUrl,
-                CategoryId = item.CategoryId,
-                Discount=item.Discount,
-                DiscountPercentage= item.DiscountPercentage
-            };
-
-            int id = productRepo.AddProduct(newProduct);
+           
+            int id = productRepo.AddProduct(item);
             if (id > 0)
             {
                 return RedirectToAction("addProduct", new { isSuccess = true, bookId = id });

@@ -11,13 +11,15 @@
    </div>
     <!--Main layout-->
     <main style="margin-top: 58px; margin-bottom: 30px">
-        <div class="pt-4 px-1" >
-            <div class="d-inline-flex flex-wrap box"> <!--p 16px TITLE    h6 price...  16 12 14px -->
+        <div class="pt-4 px-1" id="productsBox" >
+            <div class="flex-wrap box"> <!--p 16px TITLE    h6 price...  16 12 14px -->
                 
                 @foreach (var product in Model)
                 {
-                    <div class="card item my-2">
-                    <img src="@(@product.ImageUrl==""? @product.ImageUrl : "\\ProductImages\\defaultItem.jpg")" class="card-img-top" alt="product" />
+                    <div class="card item my-2 mx-1">
+                        <!--
+                    <img src="(product.ImageUrl==null? product.ImageUrl : "\\ProductImages\\defaultItem.jpg")" class="card-img-top" alt="product" /> -->
+                    <img src="@product.ImageUrl" class="card-img-top" alt="product" style="height:165px" />
                    <div class="card-body" style="background-color: #ebe6e669;">
                        <div class="d-flex justify-content-between">
                             <p class="mb-0 fs-4 fw-bold">Rs @product.Price</p>
@@ -30,7 +32,7 @@
                         }
                         else
                         {
-                            <span class="badge text-bg-secondary">Out of stock</span>
+                            <span class="badge text-bg-secondary">unavailable</span>
                         }
                         </div>
         

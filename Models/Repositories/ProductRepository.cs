@@ -55,14 +55,12 @@ namespace DMART.Models.Repositories
         
         public List<Product> Search(String searchItem)
         {
-            if (searchItem == null)
+            List<Product> searchResult = context.Products.Where(product => string.IsNullOrEmpty(product.Name) || product.Name.ToLower().Contains(searchItem.ToLower())).Select(product => product).ToList();
+            if (searchResult.Count==0)
             {
                 return GetAllProducts();
             }
-            else
-            {
-                return context.Products.Where(p => p.Name.ToLower().Contains(searchItem.ToLower())).ToList();
-            }
+            return searchResult;
         }
 
         public int AddCategory(Category category)

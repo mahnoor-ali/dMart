@@ -57,7 +57,7 @@ header {
 }
 
 .item {
-    flex-basis: 15vw;
+    flex-basis: 17vw;
 }
 
 @media (max-width: 991px) {
@@ -75,6 +75,12 @@ header {
 @media (max-width:575px) {
     .item {
         flex-basis: 46vw;
+    }
+}
+
+@media (max-width:828px) {
+    #productsBox {
+        margin-top: 145px !important;
     }
 }
 
