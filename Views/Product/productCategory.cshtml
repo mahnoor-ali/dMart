@@ -10,7 +10,15 @@
 
    </div>
     <!--Main layout-->
-    <main style="margin-top: 58px; margin-bottom: 30px">
+    <main style="margin-top: 63px; margin-bottom: 30px">
+
+    @if (ViewBag.isSuccess == false)
+    {
+        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            <h3> <strong>No such item found</strong> </h3>
+         </div>
+    }
+        
         <div class="pt-4 px-1" id="productsBox" >
             <div class="flex-wrap box"> <!--p 16px TITLE    h6 price...  16 12 14px -->
                 

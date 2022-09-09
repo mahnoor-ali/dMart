@@ -1,0 +1,50 @@
+﻿@using DMART.Models;
+@model DMART.Models.Category;
+
+@{
+    ViewData["Title"] = "Add category";
+}
+
+<div class="container">
+    <div class="display-4 fs-2 text-center fw-bold mb-2">Add new Product</div>
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong> Category added successfully.</strong> <br/>
+            <!--
+            Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.BookId">here</a> to view the details
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            -->
+         </div>
+    }
+
+<form id="addForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="form-group mt-3">
+        <label asp-for="Name" class="control-label"></label>
+        <input id="name" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+     <div class="form-group mt-3">
+        <label asp-for="Id" class="control-label"></label>
+        <textarea id="categoryId" asp-for="Id" class="form-control"></textarea>
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group mt-3">
+        <label for="ImageUrl" class="control-label"></label>
+        <div class="custom-file">
+            <input type="file" name="postedImage"  id="productImage2">
+        </div>
+        <span>@ViewBag.Message</span>
+    </div>
+                
+    <div class="form-group mt-5">
+        <input id="addcateg" type="submit" value="Add category" class="btn btn-primary w-25 btnColor" style="background-color: #8686db;" />
+    </div>
+</form>
+</div>

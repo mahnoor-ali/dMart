@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using DMART.Models.Interfaces;
 using DMART.Models;
 
@@ -18,18 +19,24 @@ namespace DMART.Controllers
             List<Product> item = productRepo.GetAllProducts();
             return View(item);
         }
-        
-         public ViewResult SearchResult(String searchItem)
-         {
-            List<Product> products = productRepo.Search(searchItem);
-            if (products.Count!=0)
-            {
-                return View("productCategory", products);
-            }
-            string msg = "No such item found.";
-            return View("Error", msg);
-         }
 
+        public ViewResult SearchResult(Boolean isSuccess) //show message if no item found in search
+        {
+            List<Product> products = productRepo.GetAllProducts();
+            ViewBag.isSuccess = isSuccess;
+            return View("productCategory", products);
+        }
+        
+        [HttpPost]
+        public IActionResult SearchResult(String searchItem) //search a product by name
+        {
+            (List<Product> products , int count) = productRepo.Search(searchItem);
+            if (count==0)
+            {
+                return RedirectToAction("SearchResult", new { isSuccess = false });
+            }
+            return View("productCategory", products);
+        }
 
     }
 }

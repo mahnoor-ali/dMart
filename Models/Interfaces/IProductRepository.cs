@@ -8,6 +8,6 @@
         public Product UpdateProduct(Product product);
         public void DeleteProduct(Product product);
         public int AddCategory(Category category);
-        public List<Product> Search(String searchItem);
+        public (List<Product>, int) Search(String searchItem);
     }
 }

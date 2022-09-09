@@ -2,7 +2,7 @@
 @model DMART.Models.Product;
 
 @{
-    ViewData["Title"] = "Add new Product";
+    ViewData["Title"] = "Update Product";
 }
 
 <div class="container">
@@ -10,7 +10,7 @@
     @if (ViewBag.IsSuccess == true)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>You have added new Product successfully.</strong> <br/>
+            <strong> Product updated successfully.</strong> <br/>
             <!--
             Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.BookId">here</a> to view the details
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

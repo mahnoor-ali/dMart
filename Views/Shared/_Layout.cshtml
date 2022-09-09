@@ -37,7 +37,7 @@
        <a asp-controller="Home" asp-action="Index"> <img src="~/lib/logo.png" alt="logo" class="bi me-4 "> </a>
       </div>
 
-      <form action="/Product/SearchResult" method="post" id="search" class="d-none d-md-flex input-group w-auto my-auto">
+      <form asp-action="SearchResult" asp-controller="Product" method="post" id="search" class="d-none d-md-flex input-group w-auto my-auto">
       <input type="search" class="form-control ms-4 py-2 searchbar" placeholder="Search for products" name="searchItem">
       <span class="input-group-text border-0 px-2 py-2" id="search-addon"> <button type="submit" style="border: 0px;" ><i class="bi bi-search"></i></button>  </span>
       </form>

@@ -1,19 +1,20 @@
 ﻿using DMART.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace DMART.Models.Repositories
 {
-    public class ProductRepository: IProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly DMARTContext context;
         public ProductRepository()
         {
             context = new DMARTContext();
         }
-        
+
         public List<Product> GetAllProducts()
         {
-            List<Product> products = context.Products.ToList();
+            List<Product> products = context.Products.OrderBy(item => item.Name).ToList();
             return products;
         }
 
@@ -22,7 +23,7 @@ namespace DMART.Models.Repositories
             Product product = context.Products.Find(id);
             return product;
         }
-      
+
         public int AddProduct(Product product)
         {
             context.Products.Add(product);
@@ -48,19 +49,37 @@ namespace DMART.Models.Repositories
             }
             return products;
         }
-        
+
         public void DeleteProduct(Product product)
         {
+            context.Products.Remove(product);
+            context.SaveChanges();
+
         }
-        
-        public List<Product> Search(String searchItem)
+
+        public (List<Product>, int) Search(String searchItem)
         {
-            List<Product> searchResult = context.Products.Where(product => string.IsNullOrEmpty(product.Name) || product.Name.ToLower().Contains(searchItem.ToLower())).Select(product => product).ToList();
-            if (searchResult.Count==0)
+            /*
+             
+            List<Product> searchResult = context.Products.Where(product => (product.Name.ToLower().Contains(searchItem.ToLower())) || (product.Id>0 )).Select(product => product).ToList();
+            if (searchResult.Count==1)
             {
-                return GetAllProducts();
+             searchResult = context.Products.Where(product => product.Name.ToLower().Contains(searchItem.ToLower())).Select(product => product).ToList();
+            } 
+             */
+            List<Product> searchResult = new List<Product>();
+            var item = context.Products.Where(product => product.Name.ToLower().Contains(searchItem.ToLower()));
+            int count = 0;
+            if (item.Any()) //if any product is found
+            {
+                searchResult = context.Products.Where(product => (product.Name.ToLower().Contains(searchItem.ToLower()))).Select(product => product).ToList();
+                count = searchResult.Count;
             }
-            return searchResult;
+            else
+            {
+                searchResult = context.Products.Where(product => (product.Id > 0)).Select(product => product).ToList();
+            }
+            return (searchResult, count);
         }
 
         public int AddCategory(Category category)

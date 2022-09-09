@@ -45,7 +45,8 @@ namespace DMART.Controllers
             }
             return "\\ProductImages\\" + fileName;
         }
-
+        
+        // to show sucess message upon addition of new product
         public ViewResult addProduct(bool isSuccess = false, int bookId = 0)
         {
             ViewBag.IsSuccess = isSuccess;
@@ -53,6 +54,7 @@ namespace DMART.Controllers
             return View();
         }
 
+        // add new product to database
         [HttpPost]
         public IActionResult addProduct(Product item, IFormFile postedImage)
         {
