@@ -3,41 +3,11 @@
 <link href="~/css/category.css" rel="Stylesheet" type="text/css" />
 }
 
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-2 mt-3">
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category" aria-current="true">
-                        <span>Fruits and Vegetables</span>
-                    </button>
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Dairy & Bread</span>
-                    </button>
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Snacks & Chocolates</span>
-                    </button>
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Bakery and Biscuits</span>
-                    </button>
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Breakfast</span></button>
-
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Tea, Coffe & Drinks </span></button>
-
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category" id="drink">
-                        <span>Beverages </span></button>
-
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Flour, Rice & Daal </span></button>
-
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Oil and Spices </span></button>
-
-                    <button href="#" class="list-group-item list-group-item-action py-2 ripple category">
-                        <span>Sauces and spreads</span></button>
-                </div>
-            </div>
-        </nav>
+   <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+      <div class="position-sticky">
+        <vc:category show="name"></vc:category>
+      </div>
+   </nav>
 
  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top p-0">
 <header id="bootstrap-overrides" style="background-color: #c7c7f4;" class="p-1 border-bottom">

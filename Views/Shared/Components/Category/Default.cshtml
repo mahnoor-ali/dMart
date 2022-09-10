@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<Category>
 
+  @if(@ViewData["show"].ToString() == "image") //execute if images has to be shown on home page
+  {
   <div class="d-flex flex-wrap justify-content-evenly">
       
    @foreach (Category category in Model)
@@ -10,5 +12,17 @@
       </a>
     </div>
    }
-
   </div>
+    }
+    else if(@ViewData["show"].ToString() == "name") //execute if name has to be shown on product category page
+   {
+  <div class="list-group list-group-flush mx-2 mt-3">
+
+     @foreach (Category category in Model)
+     {
+           <button href="#" class="list-group-item list-group-item-action py-2 ripple category" aria-current="true">
+              <span>@category.Name</span>
+            </button>
+     }
+  </div>
+   }

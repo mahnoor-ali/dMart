@@ -12,11 +12,12 @@ namespace DMART.ViewComponents
         {
             categoryRepo = _categoryRepo;
         }
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(String show)
         {
+            //to chose between showing name or image of category
+            ViewData["show"]=show;
             List<Models.Category> categories = categoryRepo.GetAllCategories();
             return View("Default",categories);
         }
-
     }
 }
