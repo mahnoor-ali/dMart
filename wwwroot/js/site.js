@@ -1,14 +1,29 @@
 ﻿
 $(document).ready(function () {
-
     $(".category").click(function () {
         $.get('/Admin/postResult', function (result) {
             $('#productsBox').html(result);
-            
         });
     })
+   
 });
 
+
+function searchProduct() {
+   
+    $.ajax({
+        method: 'POST',
+        url: '/Product/SearchResult',
+        data: $("#search").serialize(),
+        success: function (result) {
+            console.log('item searched:', result);
+            $('#productsBox').html(result);
+        },
+        error: function () {
+            console.log('Failed search');
+        }
+    })
+  }
 
 // POST REQUEST
 
@@ -20,9 +35,11 @@ function addProduct() {
     var categoryId = $("#categoryId").val();
     var discount = $("#discount").val();
     var discountPercentage = $("#discountPercentage").val();
+    
+    var item = $("#addForm").serialize();
     var imgUrl = "";
 
-    var item = {
+    var item2 = {
         Name: name,
         Description: description,
         Price: price,

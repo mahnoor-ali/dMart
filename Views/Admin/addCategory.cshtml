@@ -11,16 +11,10 @@
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> Category added successfully.</strong> <br/>
-            <!--
-            Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.BookId">here</a> to view the details
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            -->
          </div>
     }
 
-<form id="addForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
+<form id="addCategoryForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
     <div class="form-group mt-3">
@@ -29,16 +23,10 @@
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     
-     <div class="form-group mt-3">
-        <label asp-for="Id" class="control-label"></label>
-        <textarea id="categoryId" asp-for="Id" class="form-control"></textarea>
-        <span asp-validation-for="Id" class="text-danger"></span>
-    </div>
-    
     <div class="form-group mt-3">
         <label for="ImageUrl" class="control-label"></label>
         <div class="custom-file">
-            <input type="file" name="postedImage"  id="productImage2">
+            <input type="file" name="postedImage"  id="categoryImage">
         </div>
         <span>@ViewBag.Message</span>
     </div>

@@ -20,7 +20,7 @@ namespace DMART.Controllers
             return View(item);
         }
 
-        public ViewResult SearchResult(Boolean isSuccess) //show message if no item found in search
+        public ViewResult SearchResults(Boolean isSuccess) //show message if no item found in search
         {
             List<Product> products = productRepo.GetAllProducts();
             ViewBag.isSuccess = isSuccess;
@@ -33,7 +33,7 @@ namespace DMART.Controllers
             (List<Product> products , int count) = productRepo.Search(searchItem);
             if (count==0)
             {
-                return RedirectToAction("SearchResult", new { isSuccess = false });
+                return RedirectToAction("SearchResults", new { isSuccess = false });
             }
             return View("productCategory", products);
         }
