@@ -5,17 +5,17 @@ using System;
 
 namespace DMART.ViewComponents
 {
-    public class CategoryViewComponent : ViewComponent
+    public class Category : ViewComponent
     {
         public readonly ICategoryRepository categoryRepo;
-        public CategoryViewComponent(ICategoryRepository _categoryRepo)
+        public Category(ICategoryRepository _categoryRepo)
         {
             categoryRepo = _categoryRepo;
         }
         public IViewComponentResult Invoke()
         {
-            List<Category> categories = categoryRepo.GetAllCategories();
-            return View(categories);
+            List<Models.Category> categories = categoryRepo.GetAllCategories();
+            return View("Default",categories);
         }
 
     }

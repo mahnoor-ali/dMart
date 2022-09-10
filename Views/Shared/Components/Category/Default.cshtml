@@ -2,11 +2,11 @@
 
   <div class="d-flex flex-wrap justify-content-evenly">
       
-   @foreach (var book in Model)
+   @foreach (Category category in Model)
     { 
     <div>
       <a asp-action="ProductCategory" asp-controller="Product" >
-        <img asp-append-version="true" src="@book.ImageUrl" alt="category">
+        <img asp-append-version="true" src="@category.ImageUrl" alt="category">
       </a>
     </div>
    }
