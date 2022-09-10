@@ -20,9 +20,8 @@
          </div>
     }
 
-<form id="addForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
+<form asp-action="addProduct" asp-controller="Admin" id="addForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    
     
     <div class="form-group mt-3">
         <label asp-for="Name" class="control-label"></label>

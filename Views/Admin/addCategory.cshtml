@@ -6,7 +6,7 @@
 }
 
 <div class="container">
-    <div class="display-4 fs-2 text-center fw-bold mb-2">Add new Product</div>
+    <div class="display-4 fs-2 text-center fw-bold mb-2">Add new category</div>
     @if (ViewBag.IsSuccess == true)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -14,7 +14,7 @@
          </div>
     }
 
-<form id="addCategoryForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
+<form  asp-action="addCategory" asp-controller="Admin" id="addCategoryForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
     <div class="form-group mt-3">

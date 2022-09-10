@@ -22,18 +22,26 @@ namespace DMART.Controllers
             return PartialView("postResultPartialVc");
         }
 
-        //upload image of a product to the server
-        public String UploadImage(IFormFile image) 
+        //upload image of to the server
+        public String UploadImage(IFormFile image, string imageType) 
         {
             string wwwPath = this.Environment.WebRootPath;
+            String folderName = "";
+
+            //store the product and category images in their respective folder
+            if (imageType=="product")
+                folderName = "ProductImages";
+            else
+                folderName = "CategoryImages";
+
             //absolute path of images folder
-            string path = Path.Combine(wwwPath, "ProductImages");
+            string path = Path.Combine(wwwPath, folderName);
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
             String fileName = Path.GetFileName(image.FileName);
-            Console.WriteLine("ProductImages" + "\\" + fileName);
+            Console.WriteLine(folderName + "\\" + fileName);
             //TO MAKE FILENAME UNIQUE
             fileName = Guid.NewGuid().ToString() + "_" +  fileName;
            // absolute path of uploaded image file
@@ -43,7 +51,7 @@ namespace DMART.Controllers
                 image.CopyTo(stream);
                 ViewBag.Message = "File uploaded successfully";
             }
-            return "\\ProductImages\\" + fileName;
+            return "\\" + folderName +"\\" + fileName;
         }
         
         // to show sucess message upon addition of new product
@@ -58,13 +66,11 @@ namespace DMART.Controllers
         [HttpPost]
         public IActionResult addProduct(Product item, IFormFile postedImage)
         {
-
             if (postedImage!=null)
             {
-                item.ImageUrl =  UploadImage(postedImage); //upload image along with saving its path to Database
+                item.ImageUrl =  UploadImage(postedImage, "ProductImages"); //upload image along with saving its path to Database
                 Console.WriteLine(item.ImageUrl);
             }
-            //convert productModel to product bcz database don't store IForm File, and productModel uses this type
             else {
                 item.ImageUrl = "\\ProductImages\\defaultItem.jpg";
             }
@@ -120,7 +126,6 @@ namespace DMART.Controllers
             return RedirectToAction("getAllProducts");
         }
         
-        [Authorize]
         public ViewResult addCategory(bool isSuccess = false, int bookId = 0)
         {
             ViewBag.IsSuccess = isSuccess;
@@ -129,9 +134,19 @@ namespace DMART.Controllers
         }
         
         [HttpPost]
-        public IActionResult addCategory(Category item)
+        public IActionResult addCategory(Category category, IFormFile postedImage)
         {
-            int id = productRepo.AddCategory(item);
+            if (postedImage!=null)
+            {
+                category.ImageUrl =  UploadImage(postedImage, "CategoryImages"); //upload image along with saving its path to Database
+                Console.WriteLine(category.ImageUrl);
+            }
+            else
+            {
+                category.ImageUrl = "\\CategoryImages\\defaultCategory.jpg";
+            }
+
+            int id = productRepo.AddCategory(category);
             if (id > 0)
             {
                 return RedirectToAction("addCategory", new { isSuccess = true, bookId = id });
