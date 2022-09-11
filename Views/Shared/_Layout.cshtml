@@ -45,17 +45,30 @@
       <div class="navbar-nav ms-auto d-flex flex-row">
       <div class="dropdown text-end ms-auto me-2 btn-group px-2" id="dropdown">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-person-circle" style="font-size: 2rem;"></i> <span style="font-size:1.5rem;"> <span id="userName">Account</span> </span> 
+          <i class="bi bi-person-circle" style="font-size: 2rem;"></i> <span style="font-size:1.3rem;"> <span id="userName">@ViewData["username"]</span> </span> 
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="position: absolute; right: 0;">
+            @if (@ViewData["username"].ToString() == "Account")
+            {
+            <li class="dropdown-item"> Welcome User </li>
+            }
+            else{
+             <li class="dropdown-item"> Welcome @ViewData["username"] </li>
+            }  
           <li><a class="dropdown-item" href="#">My Orders</a></li>
           <li><a class="dropdown-item" href="#">Address</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
-          <li><a asp-controller="signup" asp-action="Signup" class="dropdown-item" >Login/Signup</a></li>
+
+             @if (ViewData["isLogin"].ToString() == "true")
+                {
+                  <li><a class="dropdown-item" asp-controller="signup" asp-action="Logout">Sign out</a></li>
+                }
+             else{
+                  <li><a asp-controller="signup" asp-action="Signup" class="dropdown-item" >Login/Signup</a></li>
+                 }
         </ul>
       </div>
 

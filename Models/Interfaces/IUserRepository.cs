@@ -9,6 +9,7 @@ namespace DMART.Models.Interfaces
         public List<users> ViewUsers();
         public bool validateNewUser(users user);
         public bool validateLogin(users user);
+        public string GetUserByEmail(string email);
 
     }
 }

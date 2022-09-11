@@ -57,11 +57,21 @@ namespace DMART.Controllers
         {
             if (usersRepo.validateLogin(user))
             {
+                String username = usersRepo.GetUserByEmail(user.Email);
+                HttpContext.Session.SetString("username", username);
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                string msg = "Wrong login credentials. Please Try again";
+                return View("Error", msg);
+            }
+        }
 
-            string msg = "Wrong login credentials. Please Try again";
-            return View("Error", msg);
+        public IActionResult Logout(users user)
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -19,16 +19,19 @@ namespace DMART.Controllers
 
         public ViewResult Index()
         {
-            return View(); 
+            ViewData["username"] ="";
+            if (HttpContext.Session.Keys.Contains("username"))
+            {
+                ViewData["isLogin"] = "true";
+                ViewData["username"] = HttpContext.Session.GetString("username");
+            }
+            else
+            {
+                ViewData["isLogin"] = "false";
+                ViewData["username"] = "Account";
+            }
+            return View();
         }
-
-        /*
-        public ViewResult Index()
-        {
-            List<Category> items = categoryRepo.GetAllCategories();
-            return View(items); 
-        }
-        */
 
     }
 }

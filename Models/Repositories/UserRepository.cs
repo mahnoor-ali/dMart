@@ -6,7 +6,6 @@ namespace DMART.Models.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        const string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pharmaCare;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private readonly DMARTContext context;
 
         public UserRepository()
@@ -25,62 +24,38 @@ namespace DMART.Models.Repositories
         //view all users accounts
         public List<users> ViewUsers()
         {
-            List<users> usersList = new List<users>();
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-            string query = "SELECT * FROM Users";
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                users user = new users();
-                user.Username = dr.GetString(1);
-                user.Email = dr.GetString(2);
-                user.Number = dr.GetString(3);
-                usersList.Add(user);
-            }
-            con.Close();
-            return usersList;
+            List<users> users = context.Users.ToList();
+            return users;
         }
 
         //validate that a user account doesn't exist with same email or phone no
         public bool validateNewUser(users user)
         {
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-            SqlParameter p1 = new SqlParameter("n", user.Number);
-            SqlParameter p2 = new SqlParameter("e", user.Email);
-            string query = "SELECT * FROM Users WHERE email=@e OR phone=@n";
-            SqlCommand comand = new SqlCommand(query, con);
-            comand.Parameters.Add(p1);
-            comand.Parameters.Add(p2);
-            SqlDataReader dr = comand.ExecuteReader();
-            while (dr.Read())
+            var userDetail = context.Users.Where(_user => _user.Number.Equals(user.Number) && _user.Email.Equals(user.Email));
+            if (userDetail.Any()) //if user with this number or email already exist, don't register him as new user
             {
-                return false; //return false if user with this number or email already exist
+                return false;
             }
-            return true; //return true if both number and email are not registered
+            return true;
         }
 
         //verify email and password for login
         public bool validateLogin(users user)
         {
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-            SqlParameter p1 = new SqlParameter("p", user.Password);
-            SqlParameter p2 = new SqlParameter("e", user.Email);
-            string query = "SELECT * FROM Users WHERE email=@e AND password=@p";
-            SqlCommand comand = new SqlCommand(query, con);
-            comand.Parameters.Add(p1);
-            comand.Parameters.Add(p2);
-            SqlDataReader dr = comand.ExecuteReader();
-            while (dr.Read())
+            var userDetail = context.Users.Where(_user => _user.Email.Equals(user.Email) && _user.Password.Equals(user.Password));
+            if (userDetail.Count()==1) //if user is found
             {
-                return true; //login sucessful
+                return true;
             }
             return false;
         }
 
+        //get user details by email
+        public string GetUserByEmail(string email)
+        {
+            users user = context.Users.First(user => user.Email.Equals(email));
+            return user.Username;
+        }
+      
     }
 }

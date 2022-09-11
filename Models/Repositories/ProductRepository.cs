@@ -60,7 +60,6 @@ namespace DMART.Models.Repositories
         public (List<Product>, int) Search(String searchItem)
         {
             /*
-             
             List<Product> searchResult = context.Products.Where(product => (product.Name.ToLower().Contains(searchItem.ToLower())) || (product.Id>0 )).Select(product => product).ToList();
             if (searchResult.Count==1)
             {
