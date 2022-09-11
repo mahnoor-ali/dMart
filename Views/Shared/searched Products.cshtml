@@ -1,27 +1,32 @@
-﻿
-        <div class="pt-4 px-1" id="productsBox" >
-                    <div class="card item my-2 mx-1" style="width:17%">
-                        <!--
-                    <img src="(product.ImageUrl==null? product.ImageUrl : "\\ProductImages\\defaultItem.jpg")" class="card-img-top" alt="product" /> -->
-                    <img src="\ProductImages\lays.jpeg" class="card-img-top" alt="product" style="height:165px" />
+﻿@model IEnumerable<Product>
+
+@foreach (var product in Model)
+ {
+      <div class="card item my-2 mx-1">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="product" style="height:165px" />
                    <div class="card-body" style="background-color: #ebe6e669;">
                        <div class="d-flex justify-content-between">
-                            <p class="mb-0 fs-4 fw-bold">Rs 500</p>
+                            <p class="mb-0 fs-4 fw-bold">Rs @product.Price</p>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
-                            <h5 class="mb-0 fs-5 fw-normal">Lays</h5>
-                             
+                            <h5 class="mb-0 fs-5 fw-normal">@product.Name</h5>
+                             @if (product.Quantity>0)
+                        {
                             <span class="badge text-bg-success">In stock</span>
-                      
+                        }
+                        else
+                        {
+                            <span class="badge text-bg-secondary">unavailable</span>
+                        }
                         </div>
         
                         <div class="d-flex justify-content-between">
-                            <p class="small text-muted mt-2" >150g</p>
+                            <p class="small text-muted mt-2" >@product.Description</p>
                         </div>
                        
                         <div class="form-group text-center">
                              <input type="submit" value="Add to Cart" class="btn w-100 fw-semibold btnColor" style="background-color: #8686db;" />
                          </div>
                     </div>
-                </div>
-                </div>
+      </div>
+  }

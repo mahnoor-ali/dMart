@@ -20,7 +20,7 @@
 
      @foreach (Category category in Model)
      {
-           <button href="#" class="list-group-item list-group-item-action py-2 ripple category" aria-current="true">
+           <button onclick="showCategoryItems()" href="#" class="list-group-item list-group-item-action py-2 ripple category" aria-current="true">
               <span>@category.Name</span>
             </button>
      }
