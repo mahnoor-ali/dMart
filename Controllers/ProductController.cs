@@ -7,7 +7,6 @@ namespace DMART.Controllers
 {
     public class ProductController : Controller
     {
-
         private readonly IProductRepository productRepo;
         public ProductController(IProductRepository productRepository)
         {

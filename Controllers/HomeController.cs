@@ -16,7 +16,6 @@ namespace DMART.Controllers
             Environment = environment;
         }
 
-
         public ViewResult Index()
         {
             ViewData["username"] ="";
@@ -31,6 +30,11 @@ namespace DMART.Controllers
                 ViewData["username"] = "Account";
             }
             return View();
+        }
+
+        public IActionResult getTopDealsVc()
+        {
+            return ViewComponent("TopDeals", 5);
         }
 
     }

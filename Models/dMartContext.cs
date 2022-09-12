@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using DMART.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DMART.Models
 {
-    public partial class DMARTContext : DbContext
+    public class DMARTContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Category { get; set; }

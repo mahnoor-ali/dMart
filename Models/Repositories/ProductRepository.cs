@@ -88,5 +88,11 @@ namespace DMART.Models.Repositories
             return category.Id;
         }
 
+        public List<Product> getTopDeals()
+        {
+            List<Product> topDeals = context.Products.Where(product => product.CategoryId.Equals("17")).Take(1).ToList();
+            return topDeals;
+        }
+
     }
 }

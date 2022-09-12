@@ -22,7 +22,7 @@ namespace DMART.Models
         [Required(ErrorMessage = "Confirm Password is required")]
         [StringLength(15, ErrorMessage = "Must be between 6 and 15 characters", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Password and Confirm Password must match")]
         public string ConfirmPass { get; set; }
 
         [Required(ErrorMessage = "Please enter contact no.")]

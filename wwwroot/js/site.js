@@ -1,4 +1,18 @@
 ﻿
+function loadDeals() {
+    $.ajax(
+        {
+            url: "/Home/getTopDealsVc",
+            method: "GET",
+            success: function (result) {
+                $('#topDeals').html(result);
+            },
+            error: function (error) {
+                alert("Oops! unable to load deals");
+            }
+        })
+}
+
 function showCategoryItems() {
     $.ajax(
         {

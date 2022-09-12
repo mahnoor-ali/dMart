@@ -57,6 +57,8 @@ namespace DMART.Controllers
         // to show sucess message upon addition of new product
         public ViewResult addProduct(bool isSuccess = false, int bookId = 0)
         {
+            ViewData["username"] = "Admin";
+            ViewData["isLogin"]="true";
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -66,6 +68,8 @@ namespace DMART.Controllers
         [HttpPost]
         public IActionResult addProduct(Product item, IFormFile postedImage)
         {
+            ViewData["username"] = "Admin";
+            ViewData["isLogin"]="true";
             if (postedImage!=null)
             {
                 item.ImageUrl =  UploadImage(postedImage, "ProductImages"); //upload image along with saving its path to Database
@@ -136,6 +140,7 @@ namespace DMART.Controllers
         [HttpPost]
         public IActionResult addCategory(Category category, IFormFile postedImage)
         {
+            ViewData["isLogin"]="true";
             if (postedImage!=null)
             {
                 category.ImageUrl =  UploadImage(postedImage, "CategoryImages"); //upload image along with saving its path to Database

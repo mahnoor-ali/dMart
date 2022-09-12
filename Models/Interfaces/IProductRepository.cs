@@ -9,5 +9,6 @@
         public void DeleteProduct(Product product);
         public int AddCategory(Category category);
         public (List<Product>, int) Search(String searchItem);
+        public List<Product> getTopDeals();
     }
 }
