@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DMART.Models
 {
-    public class DMARTContext : DbContext
+    public class DMARTContext : IdentityDbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<users> Users { get; set; }
+        public DbSet<User> UserAccounts { get; set; }
         public DMARTContext()
         {
         }
@@ -21,7 +21,13 @@ namespace DMART.Models
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
 
+
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -30,6 +36,7 @@ namespace DMART.Models
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DMART;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
-        
+        */
+
     }
 }

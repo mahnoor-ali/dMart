@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DMART.Models;
 using DMART.Models.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace DMART.Controllers
 {
@@ -8,9 +9,14 @@ namespace DMART.Controllers
     {
         private readonly IUserRepository usersRepo = null;
 
-        public signupController(IUserRepository bookRepository)
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager;
+     
+        public signupController(IUserRepository bookRepository, UserManager<IdentityUser> uManager, SignInManager<IdentityUser> sManager)
         {
             usersRepo=bookRepository;
+            userManager = uManager;
+            signInManager = sManager;
         }
 
         [HttpGet]
@@ -20,7 +26,7 @@ namespace DMART.Controllers
         }
 
         [HttpPost]
-        public IActionResult Signup(users user)
+        public IActionResult Signup(User user)
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +59,7 @@ namespace DMART.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(users user)
+        public IActionResult Login(User user)
         {
             if (usersRepo.validateLogin(user))
             {
@@ -68,7 +74,7 @@ namespace DMART.Controllers
             }
         }
 
-        public IActionResult Logout(users user)
+        public IActionResult Logout(User user)
         {
             HttpContext.Session.Remove("username");
             return RedirectToAction("Index", "Home");

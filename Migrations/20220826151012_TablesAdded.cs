@@ -40,23 +40,7 @@ namespace DMART.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ConfirmPass = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -66,9 +50,6 @@ namespace DMART.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Users");
         }
     }
 }

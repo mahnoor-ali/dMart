@@ -2,13 +2,13 @@
 
 namespace DMART.Models
 {
-    public class users
+    public class User
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name field can't be empty")]
         [StringLength(25)]
-        public string Username { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = " Email field can't be empty")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
@@ -29,18 +29,24 @@ namespace DMART.Models
         [StringLength(11, ErrorMessage = "Number must be 11 characters long")]
         public string Number { get; set; }
 
-        public users()
+        [Required(ErrorMessage = "Please enter address")]
+        [StringLength(50, ErrorMessage = "Must be between 10 and 50 characters", MinimumLength = 10)]
+        public string Address { get; set; }
+
+
+        public User()
         {
         }
-        public users(string user, string email, string pw, string confirmPw, string num)
+        public User(string nam, string address , string email, string pw, string confirmPw, string num)
         {
-            Username= user;
+            Name= nam;
             Email= email;
             Password= pw;
             ConfirmPass= confirmPw;
             Number= num;
+            Address = address;
         }
-        public users(string email, string pw)
+        public User(string email, string pw)
         {
             Email= email;
             Password = pw;

@@ -1,5 +1,5 @@
 ﻿@using DMART.Models;
-@model users;
+@model User;
 
 <!doctype html>
 <html lang="en">
@@ -26,8 +26,8 @@
                         <div class="text-center mb-4 fw-bold fs-2"> Create an account </div>
                         <div class="input-group mb-4 d-flex flex-wrap">
                             <i class="bi bi-person-fill" style="font-size: 1.5rem;"></i>
-                            <input asp-for="Username" class="form-control ms-3" placeholder="Enter your Name" style="width:80%" />
-                            <span asp-validation-for="Username" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
+                            <input asp-for="Name" class="form-control ms-3" placeholder="Enter your Name" style="width:80%" />
+                            <span asp-validation-for="Name" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
                         <div class="mb-4 input-group">
                             <i class="bi bi-envelope-fill" style="font-size: 1.5rem;"></i>
@@ -37,8 +37,13 @@
 
                         <div class="mb-4 input-group" style="position:relative;">
                             <i class="bi bi-telephone-fill" style="font-size: 1.5rem;"></i>
-                            <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number: +92"  style="width:80%" />
+                            <input type="text" asp-for="Number" class="form-control ms-3" placeholder="Enter number: +92" style="width:80%" />
                              <span asp-validation-for="Number" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
+                        </div>
+                        <div class="mb-4 input-group" style="position:relative;">
+                            <i class="bi bi-telephone-fill" style="font-size: 1.5rem;"></i>
+                            <input type="text" asp-for="Address" class="form-control ms-3" placeholder="Enter your exact (shipping) address" style="width:80%" />
+                             <span asp-validation-for="Address" style="font-size:14px" class="text-danger mx-auto ps-1"></span>
                         </div>
                         <div class="mb-4 input-group">
                             <i class="bi bi-lock-fill" style="font-size: 1.5rem;"></i>
