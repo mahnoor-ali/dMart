@@ -4,7 +4,6 @@ namespace DMART.Models.Interfaces
 {
     public interface IUserRepository
     {
-        const string conString="";
         public int RegisterUser(User user);
         public List<User> ViewUsers();
         public bool validateNewUser(User user);

@@ -7,11 +7,10 @@ namespace DMART.Controllers
 {
     public class signupController : Controller
     {
-        private readonly IUserRepository usersRepo = null;
-
+        private readonly IUserRepository usersRepo;
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
-     
+
         public signupController(IUserRepository bookRepository, UserManager<IdentityUser> uManager, SignInManager<IdentityUser> sManager)
         {
             usersRepo=bookRepository;
@@ -25,6 +24,36 @@ namespace DMART.Controllers
             return View("signup");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Signup(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = model.Name,
+                    Email = model.Email,
+                    EmailConfirmed = true,
+                    LockoutEnabled = false,
+                };
+                var result = await userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    if (signInManager.IsSignedIn(User))
+                    {
+                        return RedirectToAction("index", "Home");
+                    }
+                    return RedirectToAction("login", "Signup");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View();
+        }
+
+        /*
         [HttpPost]
         public IActionResult Signup(User user)
         {
@@ -50,14 +79,52 @@ namespace DMART.Controllers
             }
             return View();
         }
+        */
 
 
+        [HttpGet]
+        public async Task<IActionResult> Logout(User user)
+        {
+            HttpContext.Session.Remove("username");
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        /*
+        [HttpGet]
+        public IActionResult Logout(User user)
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction("Index", "Home");
+        }
+        */
+
+        /*
         [HttpGet]
         public ViewResult Login()
         {
             return View("login");
         }
+        */
 
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                if (result.Succeeded)
+                {
+                    String username = usersRepo.GetUserByEmail(model.Email);
+                    HttpContext.Session.SetString("username", username);
+                    return RedirectToAction("index", "Home");
+                }
+                ModelState.AddModelError(string.Empty, "Invalid Email or Password");
+            }
+            return View(model);
+        }
+        /*
         [HttpPost]
         public IActionResult Login(User user)
         {
@@ -73,11 +140,7 @@ namespace DMART.Controllers
                 return View("Error", msg);
             }
         }
+        */
 
-        public IActionResult Logout(User user)
-        {
-            HttpContext.Session.Remove("username");
-            return RedirectToAction("Index", "Home");
-        }
     }
 }

@@ -41,7 +41,6 @@ namespace DMART.Controllers
                 Directory.CreateDirectory(path);
             }
             String fileName = Path.GetFileName(image.FileName);
-            Console.WriteLine(folderName + "\\" + fileName);
             //TO MAKE FILENAME UNIQUE
             fileName = Guid.NewGuid().ToString() + "_" +  fileName;
            // absolute path of uploaded image file
