@@ -5,6 +5,11 @@
     ViewData["Title"] = "Add category";
 }
 
+ <!--Section to  use in layout for Admin views only-->
+  @section categoryNavbar{
+        <partial name="_AdminNavbar" />
+   }  
+
 <div class="container">
     <div class="display-4 fs-2 text-center fw-bold mb-2">Add new category</div>
     @if (ViewBag.IsSuccess == true)
