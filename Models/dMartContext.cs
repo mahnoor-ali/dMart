@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using DMART.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DMART.Models
 {
@@ -26,9 +24,7 @@ namespace DMART.Models
             base.OnModelCreating(modelBuilder);
         }
 
-
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
@@ -39,14 +35,39 @@ namespace DMART.Models
                 var connectionString = configuration.GetConnectionString("DefaultConnection");
                 optionsBuilder.UseSqlServer(connectionString);
             }
-            /*
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DMART;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            } */
-        }
+          }
+
         
+        public override int SaveChanges()
+        {
+            var tracker = ChangeTracker;
+            foreach (var entry in tracker.Entries()) //iterate through all the changed entities
+            {
+                if (entry.Entity is FullAuditModel) //if this entity is audit model
+                {
+                    
+                    var referenceEntity = entry.Entity as Product;
+                    switch (entry.State)
+                    {
+                        case EntityState.Added:
+                            referenceEntity.CreatedDate = DateTime.Now;
+                            referenceEntity.CreatedById = "adminXyz";
+                            break;
+                        case EntityState.Deleted:
+                            referenceEntity.isDeleted = true;
+                            break;
+                        case EntityState.Modified:
+                            referenceEntity.LastModifiedDate = DateTime.Now;
+                            referenceEntity.LastModifiedById = "adminABC";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            return base.SaveChanges();
+        }
+
 
     }
 }

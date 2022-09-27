@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DMART.Models.Interfaces;
-using DMART.Models;
-using System.Diagnostics;
 
 namespace DMART.Controllers
 {

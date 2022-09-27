@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DMART.Models
 {
-    public partial class Product
+    public partial class Product: FullAuditModel       
     {
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
