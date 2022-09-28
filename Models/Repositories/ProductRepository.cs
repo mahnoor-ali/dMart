@@ -34,7 +34,7 @@ namespace DMART.Models.Repositories
         public Product UpdateProduct(Product product) //get product from database and update it with new values
         {
             int id = product.Id;
-            Product products = context.Products.FirstOrDefault(item => item.Id == id);
+            Product products = context.Products.Single(item => item.Id == id);
             if (products!=null)
             {
                 products.Price=product.Price;
@@ -44,7 +44,6 @@ namespace DMART.Models.Repositories
                 products.CategoryId=product.CategoryId;
                 products.Description=product.Description;
                 products.Discount=product.Discount;
-                products.ImageUrl=product.ImageUrl;
                 context.SaveChanges();
             }
             return products;

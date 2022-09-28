@@ -99,7 +99,7 @@ namespace DMART.Controllers
         {
            // Product item = productRepo.GetProductById(productId);
             Product updatedItem = productRepo.UpdateProduct(item);
-            return View(updatedItem);
+            return RedirectToAction("getAllProducts");
         }
 
             /*
@@ -110,15 +110,12 @@ namespace DMART.Controllers
                 return View("showProduct", item); //show singleProduct
             }
             */
-            [HttpGet]
             public IActionResult deleteProduct(int productId)
             {
                 Product item = productRepo.GetProductById(productId);
                 productRepo.DeleteProduct(item);
                 return RedirectToAction("getAllProducts");
             }
-
-
 
             /* public ViewResult showProduct(int id)
                     { }

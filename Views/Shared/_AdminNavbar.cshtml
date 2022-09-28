@@ -11,9 +11,9 @@
       </div>
    </nav>
  }
-   
- <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top p-0">
-    <header id="bootstrap-overrides" style="background-color: #c7c7f4;" class="p-1 border-bottom">
+ 
+ <nav id="main-navbar" class="navbar navbar-expand-lg mb-4 fixed-top " style="background-color: #c7c7f4; padding-top:14px; padding-bottom-15px">
+ 
   <div class="container-fluid">
        <a asp-controller="Home" asp-action="Index"> <img src="~/lib/logo.png" alt="logo" class="bi me-4"> </a>
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false">
@@ -21,21 +21,23 @@
         </button>
       
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active fs-5 me-3" aria-current="page" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a asp-action="updateProduct" asp-controller="Admin" class="nav-link active fs-5 me-3" aria-current="page">Add Product</a>
         </li>
-      </ul>
+        <li class="nav-item">
+          <a asp-action="getAllProducts" asp-controller="Admin" class="nav-link active fs-5" aria-current="page">All Products</a>
+        </li>
+       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>
-  </header>
 </nav>
 
 
