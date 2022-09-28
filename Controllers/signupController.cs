@@ -64,14 +64,13 @@ namespace DMART.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-
         
         [HttpGet]
         public ViewResult Login()
         {
             return View("login");
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {

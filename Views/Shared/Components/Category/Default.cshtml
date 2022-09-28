@@ -7,9 +7,10 @@
    @foreach (Category category in Model)
     { 
     <div>
-      <a asp-action="ProductCategory" asp-controller="Product" >
+        <a asp-action="ProductCategory" asp-controller="Product" >
+        <input value="@category.Id" name="categoryId" style="display: none;" /> 
         <img asp-append-version="true" src="@category.ImageUrl" alt="category">
-      </a>
+        </a>
     </div>
    }
   </div>
@@ -20,7 +21,7 @@
 
      @foreach (Category category in Model)
      {
-           <button onclick="showCategoryItems()" href="#" class="list-group-item list-group-item-action py-2 ripple category" aria-current="true">
+           <button onclick="showCategoryItems(@category.Id)" href="#" class="list-group-item list-group-item-action py-2 ripple category" aria-current="true">
               <span>@category.Name</span>
             </button>
      }

@@ -79,13 +79,14 @@ namespace DMART.Models.Repositories
             }
             return (searchResult, count);
         }
-
-        public int AddCategory(Category category)
+        
+        
+        public List<Product> GetProductsByCategoryId(int id)
         {
-            context.Category.Add(category);
-            context.SaveChanges();
-            return category.Id;
+            List<Product> products = context.Products.Where(item => item.CategoryId == id).Select(item => item).ToList();
+            return products;
         }
+        
 
         public List<Product> getTopDeals()
         {

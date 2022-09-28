@@ -30,7 +30,8 @@ namespace DMART.Models
         public String ImageUrl { get; set; }
         
         [Required(ErrorMessage = "Category Id is required")]
-        public string CategoryId { get; set; }
+        [Range(0, int.MaxValue)]
+        public int CategoryId { get; set; }
         
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid discount")]
         public int Discount { get; set; }

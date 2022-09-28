@@ -13,6 +13,12 @@ namespace DMART.Controllers
             productRepo = productRepository;
         }
 
+        public PartialViewResult ProductsByCategory(int categoryId)
+        {
+            List<Product> products = productRepo.GetProductsByCategoryId(categoryId);
+            return PartialView("productCard", products);
+        }
+
         public ViewResult ProductCategory()
         {
             List<Product> item = productRepo.GetAllProducts();

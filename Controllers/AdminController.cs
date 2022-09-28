@@ -9,18 +9,16 @@ namespace DMART.Controllers
     {
 
         private readonly IProductRepository productRepo;
+        private readonly ICategoryRepository categoryRepo;
         private readonly IWebHostEnvironment Environment;
 
-        public AdminController(IProductRepository productRepository, IWebHostEnvironment environment)
+        public AdminController(IProductRepository productRepository, ICategoryRepository _categoryRepo , IWebHostEnvironment environment)
         {
             productRepo = productRepository;
             Environment = environment;
+            categoryRepo = _categoryRepo;
         }
-
-        public PartialViewResult postResult()
-        {
-            return PartialView("postResultPartialVc");
-        }
+        
 
         public ViewResult dashboard()
         {
@@ -166,7 +164,7 @@ namespace DMART.Controllers
                 category.ImageUrl = "\\CategoryImages\\defaultCategory.jpg";
             }
 
-            int id = productRepo.AddCategory(category);
+            int id = categoryRepo.AddCategory(category);
             if (id > 0)
             {
                 return RedirectToAction("addCategory", new { isSuccess = true, bookId = id });
