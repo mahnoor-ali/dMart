@@ -8,7 +8,7 @@ namespace DMART.MappingConfigurations
     {
         public UserProfile()
         {
-            CreateMap<Product, productCartModel>();
+            CreateMap<Product, ProductCartModel>();
         }
     }
 }

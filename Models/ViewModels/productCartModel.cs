@@ -1,6 +1,6 @@
 ﻿namespace DMART.Models.ViewModels
 {
-    public class productCartModel
+    public class ProductCartModel
     {
         public string Name { get; set; }
         public string ImageUrl { get; set; }
