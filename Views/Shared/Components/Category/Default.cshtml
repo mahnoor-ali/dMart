@@ -7,10 +7,10 @@
    @foreach (Category category in Model)
     { 
     <div>
-        <a asp-action="ProductCategory" asp-controller="Product" >
+        <form asp-action="ProductCategory" asp-controller="Product" method="post">
         <input value="@category.Id" name="categoryId" style="display: none;" /> 
-        <img asp-append-version="true" src="@category.ImageUrl" alt="category">
-        </a>
+        <input type="image"  src="@category.ImageUrl" alt="category"/>
+       </form>
     </div>
    }
   </div>

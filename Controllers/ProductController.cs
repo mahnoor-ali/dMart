@@ -13,16 +13,17 @@ namespace DMART.Controllers
             productRepo = productRepository;
         }
 
+        
         public PartialViewResult ProductsByCategory(int categoryId)
         {
             List<Product> products = productRepo.GetProductsByCategoryId(categoryId);
             return PartialView("productCard", products);
         }
 
-        public ViewResult ProductCategory()
+        public ViewResult ProductCategory(int categoryId)
         {
-            List<Product> item = productRepo.GetAllProducts();
-            return View(item);
+            List<Product> products = productRepo.GetProductsByCategoryId(categoryId);
+            return View(products);
         }
 
         public ViewResult SearchResults(Boolean isSuccess) //show message if no item found in search
