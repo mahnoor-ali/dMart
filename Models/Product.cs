@@ -1,14 +1,12 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DMART.Models
 {
-    public partial class Product: FullAuditModel       
+    public class Product: FullAuditModel       
     {
-
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }

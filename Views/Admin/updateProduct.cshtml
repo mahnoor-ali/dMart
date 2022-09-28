@@ -1,17 +1,29 @@
 ﻿@using DMART.Models;
-@model DMART.Models.Product;
+@model Product;
 
 @{
     ViewData["Title"] = "Update Product";
 }
 
+<style>
+    .labels{
+    font-size: 25px;
+    color: #202066;
+    font-weight: 600;
+    }
+</style>
+
+@{
+    ViewData["showCategories"] = false;
+}
  <!--Section to  use in layout for Admin views only-->
   @section categoryNavbar{
-        <partial name="_AdminNavbar" />
+        <partial name="_AdminNavbar" view-data="ViewData"/>
    }  
 
+
 <div class="container">
-    <div class="display-4 fs-2 text-center fw-bold mb-2">Add new Product</div>
+    <div class="display-4 fs-2 text-center fw-bold mb-2">Update Product</div>
     @if (ViewBag.IsSuccess == true)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -28,51 +40,50 @@
 <form id="addForm" method="post" enctype="multipart/form-data" class="card p-5" style="background-color: #ebe6e61a;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
-    
     <div class="form-group mt-3">
-        <label asp-for="Name" class="control-label"></label>
+        <label asp-for="Name" class="control-label labels"></label>
         <input id="name" asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group mt-3">
-        <label asp-for="Price" class="control-label"></label>
+        <label asp-for="Price" class="control-label labels"></label>
         <input id="price" asp-for="Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
     
     <div class="form-group mt-3">
-        <label asp-for="Quantity" class="control-label"></label>
+        <label asp-for="Quantity" class="control-label labels"></label>
         <input id="quantity" asp-for="Quantity" class="form-control" />
         <span asp-validation-for="Quantity" class="text-danger"></span>
     </div>
 
     <div class="form-group mt-3">
-        <label asp-for="Description" class="control-label"></label>
+        <label asp-for="Description" class="control-label labels"></label>
         <textarea id="description" asp-for="Description" class="form-control"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     
      <div class="form-group mt-3">
-        <label asp-for="CategoryId" class="control-label"></label>
+        <label asp-for="CategoryId" class="control-label labels"></label>
         <textarea id="categoryId" asp-for="CategoryId" class="form-control"></textarea>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
     
     <div class="form-group mt-3">
-        <label asp-for="Discount" class="control-label"></label>
+        <label asp-for="Discount" class="control-label labels"></label>
         <input id="discount" asp-for="Discount" class="form-control" />
         <span asp-validation-for="Discount" class="text-danger"></span>
     </div>
     
     <div class="form-group mt-3">
-        <label asp-for="DiscountPercentage" class="control-label"></label>
+        <label asp-for="DiscountPercentage" class="control-label labels"></label>
         <input id="discountPercentage" asp-for="DiscountPercentage" class="form-control" />
         <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
     </div>
     
     <div class="form-group mt-3">
-        <label for="Image" class="control-label"></label>
+        <label for="Image" class="control-label labels"></label>
         <div class="custom-file">
             <input type="file" name="postedImage"  id="productImage">
         </div>
@@ -80,7 +91,7 @@
     </div>
                 
     <div class="form-group mt-5">
-        <input id="addProd" type="submit" value="Add product" class="btn btn-primary w-25 btnColor" style="background-color: #8686db;" />
+        <input id="addProd" type="submit" value="Update product" class="btn btn-primary w-25 btnColor" style="background-color: #8686db;" />
     </div>
 </form>
 </div>

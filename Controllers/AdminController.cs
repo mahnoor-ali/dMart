@@ -85,29 +85,48 @@ namespace DMART.Controllers
             }
             return View();
         }
-
+      
         [HttpGet]
-        public ViewResult updateProduct(int id)
+        public ViewResult updateProduct(int productId)
         {
-            Product item = productRepo.GetProductById(id);
-            Product updatedItem = productRepo.UpdateProduct(item);
-            return View(updatedItem);
+            ViewData["isLogin"] = "true";
+            Product item = productRepo.GetProductById(productId);
+            return View("updateProduct",item);
         }
+
         [HttpPost]
         public IActionResult updateProduct(Product item)
         {
-            productRepo.GetProductById(item.Id);
-            return View("showProduct", item); //show singleProduct
+           // Product item = productRepo.GetProductById(productId);
+            Product updatedItem = productRepo.UpdateProduct(item);
+            return View(updatedItem);
         }
-        
-/* public ViewResult showProduct(int id)
-        { }
-        */
-        
-        public ViewResult getAllProducts()
+
+            /*
+            [HttpPost]
+            public IActionResult updateProduct(Product item)
+            {
+                productRepo.GetProductById(item.Id);
+                return View("showProduct", item); //show singleProduct
+            }
+            */
+            [HttpGet]
+            public IActionResult deleteProduct(int productId)
+            {
+                Product item = productRepo.GetProductById(productId);
+                productRepo.DeleteProduct(item);
+                return RedirectToAction("getAllProducts");
+            }
+
+
+
+            /* public ViewResult showProduct(int id)
+                    { }
+                    */
+
+            public ViewResult getAllProducts()
         {
             List<Product> items = productRepo.GetAllProducts();
-            //getAll****.cshtml
             return View(items);
         }
 
@@ -122,12 +141,6 @@ namespace DMART.Controllers
             return View(item);
         }
 
-        public IActionResult deleteProduct(int id)
-        {
-            Product item = productRepo.GetProductById(id);
-            productRepo.DeleteProduct(item);
-            return RedirectToAction("getAllProducts");
-        }
         
         public ViewResult addCategory(bool isSuccess = false, int bookId = 0)
         {

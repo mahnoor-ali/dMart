@@ -43,27 +43,10 @@ function searchProduct() {
 // POST REQUEST
 
 function addProduct() {
-    var name = $("#name").val();
-    var price = $("#price").val();
-    var quantity = $("#quantity").val();
-    var description = $("#description").val();
-    var categoryId = $("#categoryId").val();
-    var discount = $("#discount").val();
-    var discountPercentage = $("#discountPercentage").val();
-    
+
     var item = $("#addForm").serialize();
     var imgUrl = "";
-
-    var item2 = {
-        Name: name,
-        Description: description,
-        Price: price,
-        Quantity: quantity,
-        ImageUrl: imgUrl,
-        CategoryId: categoryId,
-        Discount: discount,
-        DiscountPercentage: discountPercentage
-    }
+   // var file = $("#img").get(0).files[0];
     var input = document.getElementById("productImage"); //get image file input id
     var files = input.files; //get files
     var formData = new FormData(); //create form
@@ -91,7 +74,12 @@ function addProduct() {
         }
     })
 }
-  
+
+
+function updateItem()
+{
+    
+}
   
   
 

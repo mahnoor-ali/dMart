@@ -3,9 +3,13 @@
 @section category {
 <link href="~/css/category.css" rel="Stylesheet" type="text/css" />
 }
+
+@{
+    ViewData["showCategories"] = true;
+}
  <!--Section to  use in layout for Admin views only-->
   @section categoryNavbar{
-        <partial name="_AdminNavbar" />
+        <partial name="_AdminNavbar" view-data="ViewData"/>
    }  
 
    </div>
@@ -47,11 +51,17 @@
                         </div>
                        
                         <div class="btn-group w-100">
+                            <form asp-controller="Admin" asp-action="updateProduct" method="get" > 
+                             <input type="text" name="productId" value="@product.Id" style="display: none" />
                              <input type="submit" value="Update" class="btn fw-semibold btnColor" style="background-color: #8686db; border: 2px solid #5f5fb7;" />
+                            </form>
+                             <form asp-controller="Admin" asp-action="updateProduct" method="get" >
+                              <input type="text" name="productId" value="@product.Id" style="display: none" />
                              <input type="submit" value="Delete" class="btn fw-semibold btnColor" style="background-color: #8686db; border: 2px solid #5f5fb7;" />
+                            </form>
                          </div>
                     </div>
-                </div>
+                 </div>
                 }
 
             </div>
