@@ -5,9 +5,9 @@ namespace DMART.Models
     public class LoginModel
     {
 
-        [Required(ErrorMessage = " Email field can't be empty")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string Email { get; set; }
+       [Required(ErrorMessage = "Username field can't be empty")]
+       [StringLength(20)]
+        public string Username { get; set; }
 
 
         [Required(ErrorMessage = "Password is required")]

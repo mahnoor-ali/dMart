@@ -1,0 +1,23 @@
+﻿<style>
+    h1{
+    margin-top:80px;
+    color: #5f5fb7;
+    }
+</style>
+
+@{
+    ViewData["showCategories"] = false;
+}
+ <!--Section to  use in layout for Admin views only-->
+  @section categoryNavbar{
+        <partial name="_AdminNavbar" view-data="ViewData"/>
+   }  
+   
+   <h1 class="p-1">Dashboard</h1>
+   <h3 class="ps-2">Manage your products with ease</h3>
+      <br />
+   <br />
+   <br />
+   <br />
+
+   

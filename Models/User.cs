@@ -7,7 +7,7 @@ namespace DMART.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name field can't be empty")]
-        [StringLength(25)]
+        [StringLength(20)]
         public string Name { get; set; }
 
         [Required(ErrorMessage = " Email field can't be empty")]

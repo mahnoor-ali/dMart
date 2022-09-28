@@ -22,6 +22,11 @@ namespace DMART.Controllers
             return PartialView("postResultPartialVc");
         }
 
+        public ViewResult dashboard()
+        {
+            return View();
+        }
+
         //upload image of to the server
         public String UploadImage(IFormFile image, string imageType) 
         {
@@ -77,7 +82,7 @@ namespace DMART.Controllers
             else {
                 item.ImageUrl = "\\ProductImages\\defaultItem.jpg";
             }
-           
+            item.CreatedById = HttpContext.Session.GetString("username");
             int id = productRepo.AddProduct(item);
             if (id > 0)
             {
@@ -99,6 +104,7 @@ namespace DMART.Controllers
         {
            // Product item = productRepo.GetProductById(productId);
             Product updatedItem = productRepo.UpdateProduct(item);
+            item.LastModifiedById = HttpContext.Session.GetString("username");
             return RedirectToAction("getAllProducts");
         }
 

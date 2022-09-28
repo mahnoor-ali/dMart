@@ -51,14 +51,12 @@ namespace DMART.Models
                     {
                         case EntityState.Added:
                             referenceEntity.CreatedDate = DateTime.Now;
-                            referenceEntity.CreatedById = "adminXyz";
                             break;
                         case EntityState.Deleted:
                             referenceEntity.isDeleted = true;
                             break;
                         case EntityState.Modified:
                             referenceEntity.LastModifiedDate = DateTime.Now;
-                            referenceEntity.LastModifiedById = "adminABC";
                             break;
                         default:
                             break;
