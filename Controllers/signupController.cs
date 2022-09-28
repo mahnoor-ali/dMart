@@ -2,6 +2,7 @@
 using DMART.Models;
 using DMART.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using DMART.Models.ViewModels;
 
 namespace DMART.Controllers
 {

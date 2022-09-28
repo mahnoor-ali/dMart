@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DMART.Models;
+using DMART.Models.ViewModels;
 
 namespace DMART.MappingConfigurations
 {
@@ -10,5 +11,4 @@ namespace DMART.MappingConfigurations
             CreateMap<Product, productCartModel>();
         }
     }
-    
 }
