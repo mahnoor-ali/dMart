@@ -15,7 +15,19 @@
    
    <h1 class="p-1">Dashboard</h1>
    <h3 class="ps-2">Manage your products with ease</h3>
-      <br />
    <br />
-   <br />
-   <br />
+   <button type="button" class="mb-3 mt-2">
+          <a asp-action="addProduct" asp-controller="Admin" class="nav-link active fs-5 me-3" aria-current="page">Add new Product</a>
+   </button>
+   
+      <div>
+   <button type="button" class="mb-3">
+   <a asp-action="getAllProducts" asp-controller="Admin" class="nav-link active fs-5" aria-current="page"> View All Products</a>
+   </button>
+    </div>
+
+   <div>
+   <button type="button" class="mb-3">
+   <a asp-action="addCategory" asp-controller="Admin" class="nav-link active fs-5" aria-current="page">Add new Category</a>
+   </button>
+   </div>

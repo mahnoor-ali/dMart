@@ -59,6 +59,7 @@ namespace DMART.Controllers
         // to show sucess message upon addition of new product
         public ViewResult addProduct(bool isSuccess = false, int bookId = 0)
         {
+            ViewBag.IsSuccess = false;
             ViewData["username"] = "Admin";
             ViewData["isLogin"]="true";
             ViewBag.IsSuccess = isSuccess;
