@@ -38,6 +38,8 @@ namespace DMART.Models
         
         [Range(0, 90, ErrorMessage = "Please enter valid Price")]
         public int DiscountPercentage { get; set; }
-        
+  
+        public virtual Category Category { get; set; }
+
     }
 }

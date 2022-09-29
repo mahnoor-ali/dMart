@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using DMART.Models;
-using DMART.Models.ViewModels;
 
 namespace DMART.MappingConfigurations
 {
@@ -8,7 +7,7 @@ namespace DMART.MappingConfigurations
     {
         public UserProfile()
         {
-            CreateMap<Product, ProductCartModel>();
+            CreateMap<Product, CartModel>();
         }
     }
 }

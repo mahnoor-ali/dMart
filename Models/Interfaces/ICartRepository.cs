@@ -1,9 +1,8 @@
-﻿using DMART.Models.ViewModels;
-namespace DMART.Models.Interfaces
+﻿namespace DMART.Models.Interfaces
 {
     public interface ICartRepository
     {
-        public void AddtoCart(ProductCartModel cart);
-        public List<ProductCartModel> GetCart();
+        public void AddtoCart(CartModel cart);
+        public List<CartModel> GetCart();
     }
 }

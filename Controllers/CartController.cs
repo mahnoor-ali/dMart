@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using DMART.Models;
 using DMART.Models.Interfaces;
-using DMART.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DMART.Controllers
@@ -20,13 +19,13 @@ namespace DMART.Controllers
         }
         public ViewResult shoppingcart()
         {
-            List<ProductCartModel> products = cartRepository.GetCart();
+            List<CartModel> products = cartRepository.GetCart();
             return View(products);
         }
         
         public ViewResult AddToCart(Product item)
         {
-            ProductCartModel product = mapper.Map<ProductCartModel>(item);
+            CartModel product = mapper.Map<CartModel>(item);
             cartRepository.AddtoCart(product);
             return View();
         }

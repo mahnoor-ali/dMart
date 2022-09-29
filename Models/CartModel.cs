@@ -1,7 +1,8 @@
-﻿namespace DMART.Models.ViewModels
+﻿namespace DMART.Models
 {
-    public class ProductCartModel
+    public class CartModel
     {
+        
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public int Price { get; set; }

@@ -46,7 +46,7 @@ namespace DMART.Models
                 if (entry.Entity is FullAuditModel) //if this entity is audit model
                 {
                     
-                    var referenceEntity = entry.Entity as Product;
+                    var referenceEntity = entry.Entity as FullAuditModel;
                     switch (entry.State)
                     {
                         case EntityState.Added:

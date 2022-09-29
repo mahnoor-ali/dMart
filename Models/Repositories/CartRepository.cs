@@ -1,5 +1,4 @@
 ﻿using DMART.Models.Interfaces;
-using DMART.Models.ViewModels;
 
 namespace DMART.Models.Repositories
 {
@@ -11,14 +10,14 @@ namespace DMART.Models.Repositories
             context = new DMARTContext();
         }
 
-        public void AddtoCart(ProductCartModel cart) 
+        public void AddtoCart(CartModel cart) 
         {
               //  context.Carts.Add(cart);
               //  context.SaveChanges();
         }
-        public List<ProductCartModel> GetCart()
+        public List<CartModel> GetCart()
         {
-            List<ProductCartModel> items = new List<ProductCartModel>();
+            List<CartModel> items = new List<CartModel>();
             //...... add functn call
 
             return items;
